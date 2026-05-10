@@ -12,11 +12,15 @@ import 'lenis/dist/lenis.css';
 
 import AmbientBackground from './components/AmbientBackground';
 import CustomCursor from './components/CustomCursor';
+import About from './components/About';
+import Education from './components/Education';
 
 const Home = () => (
   <>
     <Hero />
+    <About />
     <Skills />
+    <Education />
     <Projects />
     <Contact />
   </>

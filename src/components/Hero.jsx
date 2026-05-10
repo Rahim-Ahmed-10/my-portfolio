@@ -27,7 +27,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="min-h-[80vh] flex flex-col items-center justify-center px-6 text-center scroll-mt-32" data-purpose="hero-banner" id="about">
+    <section className="min-h-[80vh] flex flex-col items-center justify-center px-6 text-center scroll-mt-32" data-purpose="hero-banner" id="hero">
       <div className="mb-16 relative group" ref={imageRef}>
         <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-[3rem] overflow-hidden glass-panel iridescent-border hologram-effect shadow-2xl transition-all duration-700 group-hover:rounded-[4rem] bg-surface-elevated/40 backdrop-blur-xl border border-white/10">
           <img
@@ -75,13 +75,33 @@ const Hero = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="pt-12 flex items-center justify-center gap-8"
+          className="pt-12 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8"
         >
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent-primary">Availability</span>
+          <div className="flex items-center gap-4">
+            <motion.a
+              href="#contact"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 rounded-full text-xs font-black uppercase tracking-[0.2em] bg-white text-dark hover:bg-accent-primary hover:text-white transition-all duration-500 shadow-xl shadow-white/5"
+            >
+              Hire Me
+            </motion.a>
+            <motion.a
+              href="/resume.pdf" 
+              download
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 rounded-full text-xs font-black uppercase tracking-[0.2em] glass-panel iridescent-border text-white hover:border-accent-primary transition-all duration-500"
+            >
+              Download CV
+            </motion.a>
+          </div>
+
+          <div className="flex flex-col items-center md:items-start gap-1">
+            <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-accent-primary opacity-60">Status</span>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-xs font-medium uppercase tracking-widest">Ready for Projects</span>
+              <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-[10px] font-bold uppercase tracking-widest text-foreground-secondary">Ready for Projects</span>
             </div>
           </div>
         </motion.div>
