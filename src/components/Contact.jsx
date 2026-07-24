@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaLinkedinIn, FaGithub, FaEnvelope, FaFacebookF } from 'react-icons/fa6';
+import { FaLinkedinIn, FaGithub, FaEnvelope, FaFacebookF, FaWhatsapp } from 'react-icons/fa6';
 
 const Contact = () => {
   const contactLinks = [
@@ -24,6 +24,13 @@ const Contact = () => {
       href: 'https://www.facebook.com/profile.php?id=100071816113262',
       style: 'glass-panel iridescent-border',
       hoverGlow: 'group-hover:shadow-[0_0_20px_rgba(24,119,242,0.3)]'
+    },
+    {
+      name: 'WhatsApp',
+      icon: <FaWhatsapp />,
+      href: 'https://wa.me/8801690123104',
+      style: 'glass-panel iridescent-border',
+      hoverGlow: 'group-hover:shadow-[0_0_20px_rgba(37,211,102,0.4)]'
     },
     {
       name: 'Email',
@@ -52,8 +59,32 @@ const Contact = () => {
         </div>
 
         <p className="text-foreground-secondary max-w-lg mx-auto font-light text-lg leading-relaxed relative z-10">
-          Currently seeking new opportunities to innovate and build impactful digital experiences. My inbox is always open.
+          Currently seeking new opportunities to innovate and build impactful digital experiences. You can reach me directly at <a href="mailto:rahimahmed01690@gmail.com" className="text-accent-primary hover:text-accent-secondary hover:underline transition-colors font-medium">rahimahmed01690@gmail.com</a> or my inbox is always open.
         </p>
+
+        {/* --- QR Code Section --- */}
+        <div className="flex justify-center pt-6 pb-2 relative z-10">
+          <motion.div 
+            whileHover={{ scale: 1.05 }}
+            className="group relative flex flex-col items-center"
+          >
+            {/* Subtle pulse glow */}
+            <div className="absolute -inset-4 bg-accent-primary/20 rounded-[2.5rem] blur-xl opacity-50 group-hover:opacity-80 animate-pulse pointer-events-none transition-opacity duration-500" />
+            
+            <div className="relative glass-panel iridescent-border p-5 rounded-[2rem] bg-surface-elevated/40 backdrop-blur-md">
+              <div className="bg-white p-3 rounded-2xl flex items-center justify-center">
+                <img 
+                  src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://docs.google.com/document/d/1e7cwE835vZNqT__R8rgRpb4FHRhMTOHVrXFssD4PTm4/edit?usp=sharing" 
+                  alt="Scan to Connect or View Resume" 
+                  className="w-32 h-32 md:w-40 md:h-40 object-contain rounded-xl"
+                />
+              </div>
+              <div className="absolute -top-4 -right-4 bg-accent-primary text-white text-[9px] font-bold uppercase tracking-widest px-4 py-2 rounded-full shadow-lg shadow-accent-primary/30 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 whitespace-nowrap z-20">
+                Scan to Connect / View Resume
+              </div>
+            </div>
+          </motion.div>
+        </div>
 
         <div className="flex flex-wrap justify-center gap-6 pt-8 relative z-10">
           {contactLinks.map((link, index) => (

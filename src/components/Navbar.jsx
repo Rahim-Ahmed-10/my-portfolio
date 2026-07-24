@@ -13,7 +13,7 @@ const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -29,6 +29,17 @@ const Navbar = () => {
     return location.pathname === '/' ? href : `/${href}`;
   };
 
+  const handleNavClick = (e, href) => {
+    setIsOpen(false);
+    if (href.startsWith('#') && location.pathname === '/') {
+      e.preventDefault();
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        window.history.pushState(null, '', href);
+      }
+    }
+  };
 
   const menuVariants = {
     closed: {
@@ -95,7 +106,8 @@ const Navbar = () => {
               >
                 <Link
                   to={getPath(item.href)}
-                  className="text-[10px] font-black text-foreground-secondary hover:text-foreground-primary transition-colors duration-300 py-2 tracking-[0.25em] uppercase"
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className="inline-block text-[10px] font-black text-foreground-secondary hover:text-accent-primary hover:-translate-y-0.5 transition-all duration-300 py-2 tracking-[0.25em] uppercase"
                 >
                   {item.name}
                 </Link>
@@ -121,16 +133,18 @@ const Navbar = () => {
         {/* Desktop Action Button & Mobile Toggle */}
         <div className="flex items-center gap-8">
           <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.92 }}
             className="hidden md:block"
           >
             <Link
               to={getPath('#contact')}
-              className="relative px-8 py-3.5 rounded-full text-[10px] font-black uppercase tracking-[0.3em] bg-foreground-primary text-surface-primary hover:text-white transition-all duration-500 overflow-hidden group block"
+              onClick={(e) => handleNavClick(e, '#contact')}
+              className="relative px-8 py-3.5 rounded-full text-[10px] font-black uppercase tracking-[0.3em] bg-foreground-primary text-surface-primary hover:text-white transition-all duration-500 overflow-hidden group block hover:shadow-[0_0_25px_rgba(var(--accent-primary),0.5)]"
             >
               <span className="relative z-10">Hire Me</span>
               <div className="absolute inset-0 bg-gradient-to-r from-accent-primary to-accent-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 transition-transform duration-700 ease-in-out z-10" />
             </Link>
           </motion.div>
 
@@ -168,18 +182,23 @@ const Navbar = () => {
                 >
                   <Link
                     to={getPath(item.href)}
-                    onClick={() => setIsOpen(false)}
+                    onClick={(e) => handleNavClick(e, item.href)}
                     className="text-5xl font-heading font-black tracking-tighter text-foreground-primary hover:text-accent-primary transition-all duration-300 uppercase block py-2"
                   >
                     {item.name}
                   </Link>
                 </motion.li>
               ))}
-              <motion.li variants={itemVariants} className="pt-8">
+              <motion.li 
+                variants={itemVariants} 
+                className="pt-8"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <Link
                   to={getPath('#contact')}
-                  onClick={() => setIsOpen(false)}
-                  className="px-10 py-4 rounded-full bg-gradient-to-r from-accent-primary to-accent-secondary text-white font-black uppercase tracking-[0.2em] text-sm shadow-[0_0_30px_rgba(var(--accent-primary),0.3)] block"
+                  onClick={(e) => handleNavClick(e, '#contact')}
+                  className="px-10 py-4 rounded-full bg-gradient-to-r from-accent-primary to-accent-secondary text-white font-black uppercase tracking-[0.2em] text-sm shadow-[0_0_30px_rgba(var(--accent-primary),0.3)] hover:shadow-[0_0_50px_rgba(var(--accent-primary),0.7)] active:shadow-[0_0_20px_rgba(var(--accent-primary),0.9)] block transition-shadow duration-300"
                 >
                   Launch Project
                 </Link>

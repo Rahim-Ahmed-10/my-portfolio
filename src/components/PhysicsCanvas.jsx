@@ -54,12 +54,19 @@ const PhysicsCanvas = ({ tags = [] }) => {
 
     Matter.Composite.add(engine.world, [ground, leftWall, rightWall]);
 
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.font = 'bold 12px "Space Grotesk", sans-serif';
+
     // Create tags
     const bodies = tags.map((tag, i) => {
       const x = Math.random() * sceneRef.current.clientWidth;
       const y = -100 - i * 50;
       
-      const body = Matter.Bodies.rectangle(x, y, 120, 40, {
+      const textWidth = ctx.measureText(tag).width;
+      const width = textWidth + 40; // Add padding
+
+      const body = Matter.Bodies.rectangle(x, y, width, 40, {
         chamfer: { radius: 20 },
         restitution: 0.8, // Bouncy feel
         friction: 0.1,
@@ -122,21 +129,25 @@ const PhysicsCanvas = ({ tags = [] }) => {
     return () => {
       Matter.Render.stop(render);
       Matter.Runner.stop(runner);
+      Matter.Events.off(render, 'afterRender', drawText);
+      Matter.Composite.clear(engine.world);
       Matter.Engine.clear(engine);
-      render.canvas.remove();
+      if (render.canvas) {
+        render.canvas.remove();
+      }
       window.removeEventListener('resize', handleResize);
     };
   }, [tags]);
 
   return (
     <div className="w-full relative py-20 overflow-hidden" style={{ minHeight: '400px' }}>
-        <div className="absolute inset-0 z-0 opacity-10">
-            <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyber-blue via-transparent to-transparent"></div>
-        </div>
-        <div ref={sceneRef} className="w-full h-[400px] cursor-grab active:cursor-grabbing" />
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 pointer-events-none text-cyber-blue/50 text-[10px] uppercase tracking-widest font-bold">
-            Interactive Physics Environment
-        </div>
+      <div className="absolute inset-0 z-0 opacity-10">
+        <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyber-blue via-transparent to-transparent"></div>
+      </div>
+      <div ref={sceneRef} className="w-full h-[400px] cursor-grab active:cursor-grabbing" />
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 pointer-events-none text-cyber-blue/50 text-[10px] uppercase tracking-widest font-bold">
+        Interactive Physics Environment
+      </div>
     </div>
   );
 };

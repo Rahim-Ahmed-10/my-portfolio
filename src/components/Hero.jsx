@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { motion } from 'framer-motion';
 import Image from "../assets/WhatsApp_Image_2026-05-08_at_3.55.16_PM-removebg-preview.png";
+
 const Hero = () => {
   const imageRef = useRef(null);
   const textRef = useRef(null);
@@ -67,7 +68,7 @@ const Hero = () => {
           transition={{ duration: 1, delay: 0.5 }}
           className="text-lg md:text-xl font-light text-foreground-secondary max-w-2xl mx-auto leading-relaxed"
         >
-          A <span className="text-foreground-primary font-medium">Frontend Developer</span> dedicated to crafting immersive, high-performance interfaces where precision engineering meets minimalist design.
+          A <span className="text-foreground-primary font-medium">Full Stack Developer</span> dedicated to crafting immersive, high-performance interfaces where precision engineering meets minimalist design.
         </motion.p>
 
         <motion.div
@@ -87,13 +88,15 @@ const Hero = () => {
               Hire Me
             </motion.a>
             <motion.a
-              href="/resume.pdf" 
-              download
+              href="https://docs.google.com/document/d/1e7cwE835vZNqT__R8rgRpb4FHRhMTOHVrXFssD4PTm4/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 rounded-full text-xs font-black uppercase tracking-[0.2em] glass-panel iridescent-border text-white hover:border-accent-primary transition-all duration-500"
+              className="px-8 py-4 rounded-full text-xs font-black uppercase tracking-[0.2em] glass-panel iridescent-border text-white hover:border-accent-primary hover:shadow-[0_0_20px_rgba(var(--accent-primary),0.4)] transition-all duration-500 overflow-hidden relative group"
             >
-              Download CV
+              <span className="relative z-10">View Resume</span>
+              <div className="absolute inset-0 bg-white/10 scale-0 group-hover:scale-150 transition-transform duration-700 rounded-full opacity-0 group-hover:opacity-100 ease-out" />
             </motion.a>
           </div>
 

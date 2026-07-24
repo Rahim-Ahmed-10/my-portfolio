@@ -8,9 +8,17 @@ const Education = () => {
       degree: "Higher Secondary Certificate (HSC)",
       institution: "Humanities Group",
       duration: "2024 - Present",
-      status: "2nd Year Student",
-      desc: "Currently pursuing higher secondary education in the Humanities department, focusing on social sciences and communication while concurrently mastering modern frontend engineering.",
+      status: "In Progress",
+      desc: "Currently pursuing higher secondary education in the Humanities department while concurrently mastering modern web technologies, full-stack development, and digital engineering.",
       icon: <FaGraduationCap className="text-accent-primary" />
+    },
+    {
+      degree: "Complete Web Development Course",
+      institution: "Programming Hero (Batch 13)",
+      duration: "Completed",
+      status: "Certified",
+      desc: "Intensive training program covering full-stack web development, modern frontend frameworks (React, Next.js), backend systems, and database management.",
+      icon: <FaBookOpen className="text-accent-secondary" />
     }
   ];
 
@@ -28,20 +36,20 @@ const Education = () => {
         <div className="h-px flex-1 bg-gradient-to-r from-accent-primary/30 via-accent-secondary/20 to-transparent hidden md:block mb-4"></div>
       </div>
 
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto space-y-8">
         {educationData.map((edu, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
             className="group relative"
           >
             <div className="absolute -inset-2 bg-gradient-to-br from-accent-primary/10 via-accent-secondary/10 to-accent-tertiary/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2.5rem]" />
-            <div className="relative glass-panel p-8 md:p-12 rounded-[2.5rem] border border-white/5 overflow-hidden">
+            <div className="relative glass-panel p-8 md:p-12 rounded-[2.5rem] border border-white/5 overflow-hidden backdrop-blur-xl bg-surface-elevated/30">
               <div className="flex flex-col md:flex-row gap-8 items-start md:items-center">
-                <div className="w-20 h-20 rounded-3xl bg-white/5 flex items-center justify-center text-4xl shadow-inner group-hover:scale-110 transition-transform duration-500">
+                <div className="w-20 h-20 rounded-3xl bg-white/5 flex items-center justify-center text-4xl shadow-inner group-hover:scale-110 transition-transform duration-500 border border-white/10 shrink-0">
                   {edu.icon}
                 </div>
 
@@ -66,15 +74,15 @@ const Education = () => {
                     </div>
                   </div>
 
-                  <p className="text-foreground-secondary font-light leading-relaxed max-w-2xl">
+                  <p className="text-foreground-secondary font-light leading-relaxed max-w-2xl text-sm md:text-base">
                     {edu.desc}
                   </p>
                 </div>
               </div>
 
               {/* Decorative elements */}
-              <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-20 transition-opacity pointer-events-none">
-                <FaGraduationCap className="text-9xl rotate-12" />
+              <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-15 transition-opacity pointer-events-none">
+                <FaGraduationCap className="text-9xl rotate-12 text-white" />
               </div>
             </div>
           </motion.div>
