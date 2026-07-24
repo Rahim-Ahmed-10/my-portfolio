@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaLinkedinIn, FaGithub, FaEnvelope, FaFacebookF, FaWhatsapp } from 'react-icons/fa6';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Contact = () => {
   const contactLinks = [
@@ -30,7 +31,19 @@ const Contact = () => {
       icon: <FaWhatsapp />,
       href: 'https://wa.me/8801690123104',
       style: 'glass-panel iridescent-border',
-      hoverGlow: 'group-hover:shadow-[0_0_20px_rgba(37,211,102,0.4)]'
+      hoverGlow: 'group-hover:shadow-[0_0_20px_rgba(37,211,102,0.4)]',
+      onClick: () => toast.success('Connecting to WhatsApp...', {
+        style: {
+          background: 'rgba(24, 28, 36, 0.9)',
+          color: '#fff',
+          border: '1px solid rgba(37, 211, 102, 0.4)',
+          backdropFilter: 'blur(10px)'
+        },
+        iconTheme: {
+          primary: '#25D366',
+          secondary: '#181C24',
+        },
+      })
     },
     {
       name: 'Email',
@@ -38,12 +51,28 @@ const Contact = () => {
       href: 'mailto:rahimahmed01690@gmail.com',
       isPrimary: true,
       style: 'bg-gradient-to-r from-accent-primary to-accent-secondary text-white',
-      hoverGlow: 'hover:shadow-[0_0_30px_rgba(var(--accent-primary),0.4)]'
+      hoverGlow: 'hover:shadow-[0_0_30px_rgba(var(--accent-primary),0.4)]',
+      onClick: (e) => {
+        navigator.clipboard.writeText('rahimahmed01690@gmail.com');
+        toast.success('Email copied to clipboard!', {
+          style: {
+            background: 'rgba(24, 28, 36, 0.9)',
+            color: '#fff',
+            border: '1px solid rgba(56, 189, 248, 0.4)',
+            backdropFilter: 'blur(10px)'
+          },
+          iconTheme: {
+            primary: '#38BDF8',
+            secondary: '#181C24',
+          },
+        });
+      }
     }
   ];
 
   return (
     <section className="py-32 px-6 max-w-4xl mx-auto text-center scroll-mt-32" data-purpose="contact-section" id="contact">
+      <Toaster position="bottom-center" />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -95,6 +124,7 @@ const Contact = () => {
               href={link.href}
               target={link.isPrimary ? undefined : "_blank"}
               rel={link.isPrimary ? undefined : "noopener noreferrer"}
+              onClick={link.onClick}
               className={`group flex items-center gap-4 px-10 py-5 rounded-[1.5rem] transition-all duration-500 font-heading font-black text-[10px] uppercase tracking-[0.2em] ${link.style} ${link.hoverGlow} ${link.isPrimary ? 'text-white shadow-xl shadow-accent-primary/20' : 'text-foreground-primary hover:bg-white/5'}`}
             >
               <span className="text-lg transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">

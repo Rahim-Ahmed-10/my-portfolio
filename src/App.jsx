@@ -6,7 +6,6 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import ProjectDetail from './components/ProjectDetail';
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 
@@ -14,6 +13,7 @@ import AmbientBackground from './components/AmbientBackground';
 import CustomCursor from './components/CustomCursor';
 import About from './components/About';
 import Education from './components/Education';
+import BackToTop from './components/BackToTop';
 
 const Home = () => (
   <>
@@ -73,11 +73,11 @@ function App() {
       <main className="relative z-10 pt-32 pb-20">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/project/:projectId" element={<ProjectDetail />} />
         </Routes>
       </main>
 
       <Footer />
+      <BackToTop />
     </div>
   );
 }

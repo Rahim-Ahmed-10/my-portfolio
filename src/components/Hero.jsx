@@ -59,7 +59,7 @@ const Hero = () => {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="text-7xl md:text-9xl font-heading font-extralight tracking-tighter leading-[0.85] mb-10 text-white"
         >
-          Md Rahim <span className="font-black block md:inline text-transparent bg-clip-text bg-gradient-to-br from-accent-primary to-accent-tertiary drop-shadow-sm glow-text">Miah</span>
+          RAHIM MIAH
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}

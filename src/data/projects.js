@@ -6,10 +6,15 @@ export const projectsData = [
     description: 'Event Hive is a modern, full-featured event management and discovery platform with Role-Based Access Control (RBAC). It enables general users to easily browse, search, and book tickets for upcoming events, while empowering admins with a dedicated dashboard to manage events, track bookings, and control platform content.',
     fullDescription: "Event Hive — Event Management Platform modern event management and discovery platform designed to connect event organizers with attendees. The platform features secure Role-Based Access Control (RBAC), enabling regular users to seamlessly explore and book events, while providing administrators with a powerful dashboard to manage the platform efficiently.",
     livelink: "https://event-hive-client-self.vercel.app",
-    image: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=form…',
+    githubClient: "https://github.com/Rahim-Ahmed-10/event-hive-client",
+    githubServer: "https://github.com/Rahim-Ahmed-10/event-hive-server",
+    image: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&q=80&w=1920',
     color: 'cyber-blue',
     reverse: false,
-    tags: ['ফ্রন্টএন্ড Github:"https://github.com/Rahim-Ahmed-10/event-hive-client"', 'ব্যাকএন্ড Github:"https://github.com/Rahim-Ahmed-10/event-hive-server"',]
+    techStack: ['React', 'Next.js', 'Tailwind CSS', 'Better-Auth', 'MongoDB', 'Node.js', 'Express.js'],
+    challenges: "Implementing a secure Role-Based Access Control (RBAC) system while ensuring a seamless user experience for both standard users and administrators. Managing state and real-time updates for event ticketing availability required careful database optimizations.",
+    improvements: "Future updates will include real-time chat for event organizers, automated email notifications for bookings, and a mobile application version.",
+    tags: ['Next.js', 'MongoDB', 'Event Platform']
   },
   {
     id: 'medicare-connect',
@@ -18,10 +23,15 @@ export const projectsData = [
     description: 'Medicare Connect হলো একটি আধুনিক এবং সমন্বিত ডিজিটাল স্বাস্থ্যসেবা প্ল্যাটফর্ম, যা রোগী, ডাক্তার এবং প্রশাসনিক ব্যবস্থাপনার মধ্যে সেতুবন্ধন হিসেবে কাজ করে। এটি মূলত একটি "অল-ইন-ওয়ান" হেলথ-টেক সলিউশন, যার মূল লক্ষ্য হলো স্বাস্থ্যসেবাকে আরও সহজ, দ্রুত এবং স্বচ্ছ করে তোলা।',
     fullDescription: 'MediCare Connect is a comprehensive digital healthcare platform designed to streamline the interaction between patients, doctors, and administrative staff. It serves as an all-in-one health-tech solution, aiming to make healthcare more accessible, efficient, and transparent. The platform includes features such as appointment scheduling, telemedicine consultations, electronic health records, and real-time notifications for both patients and healthcare providers.',
     livelink: "https://medicare-connect-client-theta.vercel.app",
+    githubClient: "https://github.com/Rahim-Ahmed-10/medicare-connect-client",
+    githubServer: "https://github.com/Rahim-Ahmed-10/medicare-connect-server",
     image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop',
     color: 'cyber-blue',
     reverse: false,
-    tags: ['ফ্রন্টএন্ড Github:"https://github.com/Rahim-Ahmed-10/medicare-connect-client"', 'ব্যাকএন্ড Github:"https://github.com/Rahim-Ahmed-10/medicare-connect-server"',]
+    techStack: ['React 19', 'Next.js', 'Tailwind CSS', 'Better-Auth', 'Stripe', 'Framer Motion'],
+    challenges: "Handling the complex logic behind doctor appointment scheduling, specifically avoiding time-slot conflicts across different time zones. Securely handling Stripe payment processing for appointments was also a significant technical milestone.",
+    improvements: "I plan to introduce AI-based health recommendations, integrate secure video consultation features directly inside the platform, and add comprehensive analytical dashboards for doctors.",
+    tags: ['Healthcare', 'Booking System', 'Full Stack']
   },
   {
     id: 'suncart',
@@ -30,10 +40,14 @@ export const projectsData = [
     description: 'SunCart is a modern, high-performance e-commerce web application specifically curated for summer essentials. Designed to provide a seamless shopping experience, the platform offers a wide range of products—including UV-protection sunglasses, advanced skincare solutions, and portable cooling devices—to help users stay fresh and protected during the scorching summer months.',
     fullDescription: 'SunCart is a modern, high-performance e-commerce web application specifically curated for summer essentials. Designed to provide a seamless shopping experience, the platform offers a wide range of products—including UV-protection sunglasses, advanced skincare solutions, and portable cooling devices—to help users stay fresh and protected during the scorching summer months.',
     livelink: "https://sun-cart-frontend.vercel.app",
+    githubClient: "https://github.com/Rahim-Ahmed-10/SunCart-Frontend",
     image: 'https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?q=80&w=1920&auto=format&fit=crop',
     color: 'cyber-purple',
     reverse: true,
-    tags: ['Github Link:"https://github.com/Rahim-Ahmed-10/SunCart-Frontend"',]
+    techStack: ['React', 'Tailwind CSS', 'Vite', 'React Router'],
+    challenges: "Building a high-performance filtering and search system for hundreds of products without lagging the UI. Ensuring smooth Framer Motion animations without sacrificing rendering speed.",
+    improvements: "Implement a robust backend with secure payment gateways, user wishlists, and order tracking history.",
+    tags: ['E-Commerce', 'Frontend', 'React']
   },
   {
     id: 'payoo',
@@ -42,9 +56,13 @@ export const projectsData = [
     description: 'Payoo একটি আধুনিক এবং সুরক্ষিত Mobile Financial Service (MFS) প্ল্যাটফর্মের প্রোটোটাইপ। এটি ব্যবহারকারীদের দৈনন্দিন আর্থিক লেনদেনের জন্য একটি সহজ এবং কার্যকর ইউজার ইন্টারফেস প্রদান করে। এটি মূলত একটি রিয়েল-টাইম ব্যাংকিং অ্যাপ্লিকেশনের অভিজ্ঞতা দেওয়ার জন্য তৈরি করা হয়েছে।',
     fullDescription: 'Payoo is a prototype for a secure and modern Mobile Financial Service (MFS). It aims to simplify daily financial transactions through an intuitive user interface. The application includes features such as money transfer, bill payments, and real-time balance tracking, all protected by industry-standard security protocols.',
     livelink: "https://rahim-ahmed-10.github.io/Payoo-project",
+    githubClient: "https://github.com/Rahim-Ahmed-10/Payoo-project",
     image: 'https://i.ibb.co.com/1tqhNNKg/logo.png',
     color: 'cyber-blue',
     reverse: false,
-    tags: ['HTML5', 'JavaScript', 'MFS Prototype', 'Financial UI']
+    techStack: ['HTML5', 'CSS3', 'JavaScript'],
+    challenges: "Designing a complex financial User Interface that remains fully responsive and intuitive across all mobile devices while managing DOM interactions entirely with Vanilla JavaScript.",
+    improvements: "Upgrade the prototype to a full React/Next.js stack, add backend integration for real transaction processing, and implement strict JWT-based authentication.",
+    tags: ['MFS Prototype', 'Financial UI', 'Vanilla JS']
   },
 ];
