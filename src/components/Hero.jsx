@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { motion } from 'framer-motion';
+import { resumeUrl } from '../data/config';
 import Image from "../assets/WhatsApp_Image_2026-05-08_at_3.55.16_PM-removebg-preview.png";
 
 const Hero = () => {
@@ -28,7 +29,14 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="min-h-[80vh] flex flex-col items-center justify-center px-6 text-center scroll-mt-32" data-purpose="hero-banner" id="hero">
+    <motion.section 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      className="min-h-[80vh] py-20 md:py-32 flex flex-col items-center justify-center px-6 text-center scroll-mt-32 backdrop-blur-xl bg-slate-950/60 relative" 
+      data-purpose="hero-banner" 
+      id="hero"
+    >
       <div className="mb-16 relative group" ref={imageRef}>
         <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-[3rem] overflow-hidden glass-panel iridescent-border hologram-effect shadow-2xl transition-all duration-700 group-hover:rounded-[4rem] bg-surface-elevated/40 backdrop-blur-xl border border-white/10">
           <img
@@ -57,7 +65,7 @@ const Hero = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-7xl md:text-9xl font-heading font-extralight tracking-tighter leading-[0.85] mb-10 text-white"
+          className="text-7xl md:text-9xl font-heading font-extralight tracking-tighter leading-[0.85] mb-10 text-slate-100 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
         >
           RAHIM MIAH
         </motion.h2>
@@ -66,9 +74,9 @@ const Hero = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="text-lg md:text-xl font-light text-foreground-secondary max-w-2xl mx-auto leading-relaxed"
+          className="text-lg md:text-xl font-light text-slate-400 max-w-2xl mx-auto leading-relaxed"
         >
-          A <span className="text-foreground-primary font-medium">Full Stack Developer</span> dedicated to crafting immersive, high-performance interfaces where precision engineering meets minimalist design.
+          A <span className="text-slate-100 font-medium">Full Stack Developer</span> dedicated to crafting immersive, high-performance interfaces where precision engineering meets minimalist design.
         </motion.p>
 
         <motion.div
@@ -88,12 +96,12 @@ const Hero = () => {
               Hire Me
             </motion.a>
             <motion.a
-              href="https://docs.google.com/document/d/1e7cwE835vZNqT__R8rgRpb4FHRhMTOHVrXFssD4PTm4/edit?usp=sharing"
+              href={resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 rounded-full text-xs font-black uppercase tracking-[0.2em] glass-panel iridescent-border text-white hover:border-accent-primary hover:shadow-[0_0_20px_rgba(var(--accent-primary),0.4)] transition-all duration-500 overflow-hidden relative group"
+              className="px-8 py-4 rounded-full text-xs font-black uppercase tracking-[0.2em] glass-panel iridescent-border text-slate-100 hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all duration-500 overflow-hidden relative group"
             >
               <span className="relative z-10">View Resume</span>
               <div className="absolute inset-0 bg-white/10 scale-0 group-hover:scale-150 transition-transform duration-700 rounded-full opacity-0 group-hover:opacity-100 ease-out" />
@@ -103,13 +111,16 @@ const Hero = () => {
           <div className="flex flex-col items-center md:items-start gap-1">
             <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-accent-primary opacity-60">Status</span>
             <div className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-[10px] font-bold uppercase tracking-widest text-foreground-secondary">Ready for Projects</span>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+              </span>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Available for Hire</span>
             </div>
           </div>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

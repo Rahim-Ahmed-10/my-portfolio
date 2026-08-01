@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
+import { resumeUrl } from '../data/config';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -131,7 +132,21 @@ const Navbar = () => {
         </nav>
 
         {/* Desktop Action Button & Mobile Toggle */}
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-6">
+          <motion.div
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.92 }}
+            className="hidden md:block"
+          >
+            <a
+              href={resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] bg-white/5 border border-white/10 hover:border-cyan-400 text-slate-100 hover:text-white transition-all duration-500 overflow-hidden group block hover:shadow-[0_0_20px_rgba(0,229,255,0.4)]"
+            >
+              Resume
+            </a>
+          </motion.div>
           <motion.div
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.92 }}
@@ -191,14 +206,20 @@ const Navbar = () => {
               ))}
               <motion.li 
                 variants={itemVariants} 
-                className="pt-8"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="pt-6 flex flex-col gap-4 items-center"
               >
+                <a
+                  href={resumeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-10 py-3 rounded-full bg-white/5 border border-white/10 text-slate-100 font-black uppercase tracking-[0.2em] text-sm shadow-md block transition-all hover:bg-white/10 w-full"
+                >
+                  Download CV
+                </a>
                 <Link
                   to={getPath('#contact')}
                   onClick={(e) => handleNavClick(e, '#contact')}
-                  className="px-10 py-4 rounded-full bg-gradient-to-r from-accent-primary to-accent-secondary text-white font-black uppercase tracking-[0.2em] text-sm shadow-[0_0_30px_rgba(var(--accent-primary),0.3)] hover:shadow-[0_0_50px_rgba(var(--accent-primary),0.7)] active:shadow-[0_0_20px_rgba(var(--accent-primary),0.9)] block transition-shadow duration-300"
+                  className="px-10 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-black uppercase tracking-[0.2em] text-sm shadow-[0_0_30px_rgba(0,229,255,0.3)] hover:shadow-[0_0_50px_rgba(0,229,255,0.7)] active:shadow-[0_0_20px_rgba(0,229,255,0.9)] block transition-shadow duration-300 w-full"
                 >
                   Launch Project
                 </Link>

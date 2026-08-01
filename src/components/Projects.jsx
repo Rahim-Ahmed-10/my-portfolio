@@ -1,21 +1,38 @@
 import React from 'react';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import { projectsData } from '../data/projects';
 
 const Projects = () => {
   return (
-    <section className="py-32 px-6 max-w-6xl mx-auto scroll-mt-32" data-purpose="project-list" id="projects">
+    <motion.section 
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+      className="py-20 md:py-32 px-6 max-w-6xl mx-auto scroll-mt-32" 
+      data-purpose="project-list" 
+      id="projects"
+    >
       <div className="flex items-center gap-4 mb-16">
         <h2 className="text-2xl font-heading font-light tracked-header uppercase">Deployed <span className="font-bold">Artifacts</span></h2>
         <div className="h-px flex-1 bg-gradient-to-r from-white/20 to-transparent"></div>
       </div>
       
       <div className="space-y-16">
-        {projectsData.map((project) => (
-          <article key={project.id} className="group relative" data-purpose="project-card">
+        {projectsData.map((project, index) => (
+          <motion.article 
+            key={project.id}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            className="group relative" 
+            data-purpose="project-card"
+          >
             <div className={`absolute -inset-4 bg-gradient-to-r ${project.color === 'cyber-blue' ? 'from-cyber-blue/10 via-cyber-purple/10' : 'from-cyber-purple/10 via-cyber-pink/10'} to-transparent blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700`}></div>
             
-            <div className={`relative glass-panel iridescent-border p-6 md:p-10 rounded-[3rem] flex flex-col ${project.reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-10 items-center transition-all duration-700 group-hover:bg-surface-elevated/5 group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-10`}>
+            <div className={`relative glass-panel border border-white/10 hover:border-cyan-400/50 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(0,229,255,0.15)] p-6 md:p-10 rounded-[3rem] flex flex-col ${project.reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-10 items-center transition-all duration-500 z-10`}>
               
               {/* Project Image */}
               <div className="w-full lg:w-1/2 aspect-[16/10] rounded-[2rem] overflow-hidden iridescent-border relative group/img shadow-2xl shrink-0">
@@ -38,12 +55,12 @@ const Projects = () => {
                     </span>
                     <div className="h-px w-8 bg-border-subtle/20" />
                   </div>
-                  <h3 className="text-4xl md:text-5xl font-heading font-black tracking-tight leading-none drop-shadow-sm text-foreground-primary">
+                  <h3 className="text-4xl md:text-5xl font-heading font-black tracking-tight leading-none drop-shadow-sm text-slate-100">
                     {project.title}
                   </h3>
                 </div>
 
-                <p className="text-foreground-secondary font-light leading-relaxed text-lg">
+                <p className="text-slate-400 font-light leading-relaxed text-lg">
                   {project.description}
                 </p>
 
@@ -51,7 +68,7 @@ const Projects = () => {
                 {project.techStack && (
                   <div className="flex flex-wrap gap-2 pt-2">
                     {project.techStack.map(tech => (
-                      <span key={tech} className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-wider text-foreground-secondary">
+                      <span key={tech} className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-wider text-slate-400">
                         {tech}
                       </span>
                     ))}
@@ -65,7 +82,7 @@ const Projects = () => {
                       href={project.githubClient}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400 text-sm font-medium transition-all shadow-md text-foreground-primary hover:text-white"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 text-sm font-medium transition-all duration-300 shadow-md text-slate-100 hover:text-white hover:-translate-y-1"
                     >
                       <FaGithub className="text-lg" /> 📁 Client Repo / GitHub (Frontend)
                     </a>
@@ -76,7 +93,7 @@ const Projects = () => {
                       href={project.githubServer}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400 text-sm font-medium transition-all shadow-md text-foreground-primary hover:text-white"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 text-sm font-medium transition-all duration-300 shadow-md text-slate-100 hover:text-white hover:-translate-y-1"
                     >
                       <FaGithub className="text-lg" /> ⚙️ Server Repo / GitHub (Backend)
                     </a>
@@ -87,19 +104,18 @@ const Projects = () => {
                       href={project.livelink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent-primary hover:bg-accent-secondary border border-accent-primary hover:border-accent-secondary hover:shadow-[0_0_15px_rgba(var(--accent-primary),0.5)] text-sm font-medium transition-all shadow-md text-white"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-400/30 hover:border-cyan-400/80 hover:shadow-[0_0_15px_rgba(0,229,255,0.4)] text-sm font-medium transition-all duration-300 shadow-md text-cyan-50 hover:-translate-y-1"
                     >
                       <FaExternalLinkAlt className="text-lg" /> 🚀 Live Site / Demo
                     </a>
                   )}
                 </div>
               </div>
-
             </div>
-          </article>
+          </motion.article>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

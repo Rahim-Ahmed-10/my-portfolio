@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaLinkedinIn, FaGithub, FaEnvelope, FaFacebookF, FaWhatsapp } from 'react-icons/fa6';
 import toast, { Toaster } from 'react-hot-toast';
+import { resumeUrl } from '../data/config';
 
 const Contact = () => {
   const contactLinks = [
@@ -103,7 +104,7 @@ const Contact = () => {
             <div className="relative glass-panel iridescent-border p-5 rounded-[2rem] bg-surface-elevated/40 backdrop-blur-md">
               <div className="bg-white p-3 rounded-2xl flex items-center justify-center">
                 <img 
-                  src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://docs.google.com/document/d/1e7cwE835vZNqT__R8rgRpb4FHRhMTOHVrXFssD4PTm4/edit?usp=sharing" 
+                  src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(resumeUrl)}`} 
                   alt="Scan to Connect or View Resume" 
                   className="w-32 h-32 md:w-40 md:h-40 object-contain rounded-xl"
                 />

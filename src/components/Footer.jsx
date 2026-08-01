@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaGithub, FaLinkedin, FaFacebook, FaTwitter, FaWhatsapp } from 'react-icons/fa';
+import { resumeUrl } from '../data/config';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -14,6 +15,7 @@ const Footer = () => {
           <a href="#about" className="hover:text-accent-primary transition-colors duration-300">About</a>
           <a href="#skills" className="hover:text-accent-primary transition-colors duration-300">Skills</a>
           <a href="#projects" className="hover:text-accent-primary transition-colors duration-300">Projects</a>
+          <a href={resumeUrl} target="_blank" rel="noopener noreferrer" className="hover:text-accent-primary transition-colors duration-300">Resume</a>
           <a href="#contact" className="hover:text-accent-primary transition-colors duration-300">Contact</a>
         </div>
 

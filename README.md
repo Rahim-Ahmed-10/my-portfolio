@@ -1,74 +1,75 @@
-# 🌌 Md Rahim Miah | Modern Frontend Developer
+# 🌌 MD RAHIM MIAH | Full-Stack Developer
 
 <div align="center">
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/Next.js_15-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" />
+  <img src="https://img.shields.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
   <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
-  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" />
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
 </div>
 
 ---
 
 ### 🎭 Perspective & Passion
-I am a **Frontend Developer** with a unique background in **Humanities**. This transition has equipped me with a deep understanding of human communication and social structures, which I now translate into digital experiences. I don't just write code; I architect environments that resonate with people.
+I am a driven **Full-Stack Developer** with a unique academic background in **Humanities**. This transition gives me a deep understanding of human communication, user empathy, and structural logic, which I translate into modern, high-performance digital experiences. I focus on writing clean code, performance optimization, and exploring **Context Engineering**.
 
-Currently, I am an **HSC 2nd Year Student (Humanities)**, balancing my academic pursuits with a rigorous commitment to mastering modern web technologies.
+Currently balancing my HSC studies with a dedicated commitment to full-stack engineering and modern web technologies.
 
 ---
 
-## 🚀 Live Portfolio
-Experience the immersive, high-performance interface firsthand:
-👉 **[Live Demo](https://rahim-digital-portfolio.netlify.app)**
+## 🚀 Live Links & Resume
+- 🌐 **Portfolio**: [rahim-digital-portfolio.netlify.app](https://rahim-digital-portfolio.netlify.app)
+- 📄 **Resume**: [View / Download PDF Resume](https://drive.google.com/file/d/1si6kHkhLergjFRcqm29xPncb7lctmz1g/view?usp=drive_link)
 
 ---
 
 ## ✨ Core Philosophy
-- **Human-Centric Design**: Bridging the gap between Humanities and Logic.
-- **Performance First**: Built with **Vite** for lightning-fast delivery.
-- **Aesthetic Excellence**: Premium dark-mode designs with **Tailwind CSS**.
-- **Dynamic Interaction**: Fluid animations powered by **Framer Motion**.
+- **Human-Centric Engineering**: Bridging empathy from Humanities with full-stack logic.
+- **Modern Security & Payments**: Robust authentication (Better-Auth, JWT) and integrated financial workflows (Stripe).
+- **Aesthetic Micro-Interactions**: High-end animations using Framer Motion, GSAP, and Matter.js physics.
 
 ---
 
 ## 🛠️ Tech Stack Matrix
+
 | Layer | Technologies |
 | :--- | :--- |
-| **Framework** | React.js (v18+) |
-| **Styling** | Tailwind CSS, Glassmorphism, CSS3 |
-| **Build Tool** | Vite |
-| **Animations** | Framer Motion, GSAP |
-| **Icons** | React Icons, Lucide |
+| **Frontend** | React 19, Next.js, TypeScript, JavaScript, Tailwind CSS, HeroUI, Radix UI |
+| **Backend & Database** | Node.js, Express.js, REST APIs, MongoDB |
+| **Auth & Payments** | Better-Auth, JWT, Google Auth, Stripe API |
+| **Animations & Tools** | Framer Motion, GSAP, Lenis Scroll, Matter.js, Git, GitHub, Vercel |
 
 ---
 
-## 📂 Top Projects
+## 📂 Featured Projects
 
-### 1. [Digitools](https://digitools-platfrom-hp.netlify.app)
-> **Modern All-in-One Digital Marketplace**
-> A state-of-the-art platform for creative resources and digital assets. Built with a focus on seamless user experience and secure navigation.
+### 1. 🏥 MediCare Connect — Healthcare Platform
+> **Patient-Doctor Consultation & Booking Platform**
+> Integrated Stripe payments, session auth with Better-Auth, and analytical dashboards using Recharts.
+> - **Tech**: Next.js, React 19, MongoDB, Better-Auth, Stripe, HeroUI, Tailwind CSS
 
-### 2. [Bookvibe](https://bookvibe-project.netlify.app)
-> **Literary Discovery Sanctuary**
-> A comprehensive web-based sanctuary for bibliophiles to discover and organize their literary journeys. Features dynamic filtering and tracking.
+### 2. 🎟️ EventHive — Event Management Platform
+> **Full-Stack Event Management & Ticketing Web App**
+> Features Role-Based Access Control (RBAC), ticket booking workflows, Stripe checkout sessions, and admin dashboards.
+> - **Tech**: Next.js, React 19, MongoDB, Better-Auth, Stripe, Tailwind CSS, HeroUI
 
-### 3. [Payoo](https://rahim-ahmed-10.github.io/Payoo-project/)
-> **MFS Financial Prototype**
-> A secure and modern Mobile Financial Service (MFS) interface prototype, designed for intuitive daily financial transactions.
-
-### 4. [Janala English](https://rahim-ahmed-10.github.io/Janala-English/)
-> **Interactive Education Platform**
-> A dynamic web application designed for English language learning, featuring structured lessons and interactive feedback.
+### 3. 🌐 Interactive Creative Portfolio
+> **Personal Showcase with Modern Animations & Physics**
+> Features Matter.js physics simulations, smooth Lenis scrolling, GSAP micro-interactions, and Framer Motion transitions.
+> - **Tech**: React 19, Vite, Framer Motion, GSAP, Lenis, Matter.js, Tailwind CSS
 
 ---
 
-## 🎓 Academic Status
-- **Current**: Higher Secondary Certificate (HSC) 2nd Year
-- **Department**: Humanities Group
-- **Focus**: Integrating social empathy into engineering precision.
+## 🎓 Education & Certifications
+- **HSC (Humanities)** — Tarail Muktijuddhya Govt College *(In Progress)*
+- **Complete Web Development Course** — Programming Hero (Batch 13)
 
 ---
 
 <div align="center">
-  <p>Built with ⚡ by Md Rahim Miah</p>
-  <a href="#contact">Hire Me</a> • <a href="https://github.com/Rahim-Ahmed-10">GitHub</a>
+  <p>Built with ⚡ by MD RAHIM MIAH</p>
+  <a href="https://rahim-digital-portfolio.netlify.app">Live Portfolio</a> • 
+  <a href="https://github.com/Rahim-Ahmed-10">GitHub Profile</a> • 
+  <a href="mailto:rahimahmed01690@gmail.com">Contact Email</a>
 </div>
