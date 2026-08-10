@@ -1,28 +1,31 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, Suspense, lazy } from 'react';
 import { useLocation, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import CustomCursor from './components/CustomCursor';
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 
-import AmbientBackground from './components/AmbientBackground';
-import CustomCursor from './components/CustomCursor';
-import About from './components/About';
-import Education from './components/Education';
-import BackToTop from './components/BackToTop';
+// Lazy loaded components (Below the fold or heavy)
+const AmbientBackground = lazy(() => import('./components/AmbientBackground'));
+const About = lazy(() => import('./components/About'));
+const Skills = lazy(() => import('./components/Skills'));
+const Education = lazy(() => import('./components/Education'));
+const Projects = lazy(() => import('./components/Projects'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
+const BackToTop = lazy(() => import('./components/BackToTop'));
 
 const Home = () => (
   <>
     <Hero />
-    <About />
-    <Skills />
-    <Education />
-    <Projects />
-    <Contact />
+    <Suspense fallback={<div className="min-h-screen" />}>
+      <About />
+      <Skills />
+      <Education />
+      <Projects />
+      <Contact />
+    </Suspense>
   </>
 );
 
@@ -31,23 +34,29 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-    });
+    // Defer Lenis initialization slightly to improve TTI
+    const timer = setTimeout(() => {
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+      });
 
-    lenisRef.current = lenis;
+      lenisRef.current = lenis;
 
-    function raf(time) {
-      lenis.raf(time);
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
       requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
+    }, 100);
 
     return () => {
-      lenis.destroy();
+      clearTimeout(timer);
+      if (lenisRef.current) {
+        lenisRef.current.destroy();
+      }
     };
   }, []);
 
@@ -66,7 +75,9 @@ function App() {
   return (
     <div className="relative bg-surface-primary text-foreground-primary font-sans overflow-x-hidden min-h-screen selection:bg-accent-primary selection:text-white">
       <CustomCursor />
-      <AmbientBackground />
+      <Suspense fallback={null}>
+        <AmbientBackground />
+      </Suspense>
 
       <Navbar />
       
@@ -76,8 +87,10 @@ function App() {
         </Routes>
       </main>
 
-      <Footer />
-      <BackToTop />
+      <Suspense fallback={null}>
+        <Footer />
+        <BackToTop />
+      </Suspense>
     </div>
   );
 }

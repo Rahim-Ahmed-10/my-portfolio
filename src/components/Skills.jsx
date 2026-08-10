@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PhysicsCanvas from './PhysicsCanvas';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   FaHtml5,
   FaCss3Alt,
@@ -31,176 +31,204 @@ import {
 } from 'react-icons/si';
 
 const skillsData = [
-  // Frontend Core
+  // Frontend
   {
     name: 'HTML5',
     desc: 'Semantic structure combined with modern web standards.',
     icon: <FaHtml5 className="text-[#E34F26]" />,
-    gradient: 'from-[#E34F26]/50 to-[#ff9d00]/50'
+    gradient: 'from-[#E34F26]/50 to-[#ff9d00]/50',
+    category: 'Frontend'
   },
   {
     name: 'CSS3',
     desc: 'Advanced styling, animations, and responsive layouts.',
     icon: <FaCss3Alt className="text-[#1572B6]" />,
-    gradient: 'from-[#1572B6]/50 to-[#00d2ff]/50'
+    gradient: 'from-[#1572B6]/50 to-[#00d2ff]/50',
+    category: 'Frontend'
   },
   {
     name: 'JavaScript',
     desc: 'Advanced ES6+ logic, async patterns, and functional programming.',
     icon: <SiJavascript className="text-[#F7DF1E]" />,
-    gradient: 'from-[#F7DF1E]/50 to-[#ff9d00]/50'
+    gradient: 'from-[#F7DF1E]/50 to-[#ff9d00]/50',
+    category: 'Frontend'
   },
   {
     name: 'TypeScript',
     desc: 'Static typing for scalable, maintainable, and error-free codebases.',
     icon: <SiTypescript className="text-[#3178C6]" />,
-    gradient: 'from-[#3178C6]/50 to-[#7c3aed]/50'
+    gradient: 'from-[#3178C6]/50 to-[#7c3aed]/50',
+    category: 'Frontend'
   },
   {
     name: 'React 19',
     desc: 'Component-based architecture & high-performance state management.',
     icon: <FaReact className="text-[#61DAFB]" />,
-    gradient: 'from-[#61DAFB]/50 to-[#00d2ff]/50'
+    gradient: 'from-[#61DAFB]/50 to-[#00d2ff]/50',
+    category: 'Frontend'
   },
   {
     name: 'Next.js',
     desc: 'Full-stack React framework with SSR, ISR, and optimized routing.',
     icon: <SiNextdotjs className="text-white" />,
-    gradient: 'from-white/30 to-gray-500/30'
+    gradient: 'from-white/30 to-gray-500/30',
+    category: 'Frontend'
   },
   {
     name: 'React Router',
     desc: 'Declarative routing for React single-page applications.',
     icon: <SiReactrouter className="text-[#CA4245]" />,
-    gradient: 'from-[#CA4245]/50 to-[#ff9d00]/50'
+    gradient: 'from-[#CA4245]/50 to-[#ff9d00]/50',
+    category: 'Frontend'
   },
   {
     name: 'Tailwind CSS',
     desc: 'Utility-first CSS framework for rapid, responsive UI development.',
     icon: <SiTailwindcss className="text-[#06B6D4]" />,
-    gradient: 'from-[#06B6D4]/50 to-[#00d2ff]/50'
+    gradient: 'from-[#06B6D4]/50 to-[#00d2ff]/50',
+    category: 'Frontend'
   },
   {
     name: 'HeroUI',
     desc: 'Beautiful, fast and modern React UI library.',
     icon: <FaCode className="text-white" />,
-    gradient: 'from-white/20 to-cyber-purple/50'
+    gradient: 'from-white/20 to-cyber-purple/50',
+    category: 'Frontend'
   },
   {
     name: 'Radix UI',
     desc: 'Unstyled, accessible components for building high-quality design systems.',
     icon: <SiRadixui className="text-white" />,
-    gradient: 'from-white/20 to-gray-500/30'
+    gradient: 'from-white/20 to-gray-500/30',
+    category: 'Frontend'
   },
-  // Backend & DB
-  {
-    name: 'Node.js',
-    desc: 'Asynchronous event-driven JavaScript runtime.',
-    icon: <FaNodeJs className="text-[#339933]" />,
-    gradient: 'from-[#339933]/50 to-[#7c3aed]/50'
-  },
-  {
-    name: 'Express.js',
-    desc: 'Fast, unopinionated, minimalist web framework for Node.js.',
-    icon: <SiExpress className="text-white" />,
-    gradient: 'from-white/30 to-gray-500/30'
-  },
-  {
-    name: 'REST APIs',
-    desc: 'Designing and consuming robust RESTful architectures.',
-    icon: <FaServer className="text-[#00d2ff]" />,
-    gradient: 'from-[#00d2ff]/50 to-[#7c3aed]/50'
-  },
-  {
-    name: 'MongoDB',
-    desc: 'NoSQL document database for scalable applications.',
-    icon: <SiMongodb className="text-[#47A248]" />,
-    gradient: 'from-[#47A248]/50 to-[#339933]/50'
-  },
-  // Auth & Security
-  {
-    name: 'Better-Auth',
-    desc: 'Modern and flexible authentication for React.',
-    icon: <FaShieldAlt className="text-accent-primary" />,
-    gradient: 'from-accent-primary/50 to-accent-secondary/50'
-  },
-  {
-    name: 'JWT',
-    desc: 'Stateless authentication via JSON Web Tokens.',
-    icon: <SiJsonwebtokens className="text-white" />,
-    gradient: 'from-white/30 to-[#ff9d00]/50'
-  },
-  {
-    name: 'Google Auth',
-    desc: 'Secure OAuth 2.0 authentication integration.',
-    icon: <FaGoogle className="text-[#4285F4]" />,
-    gradient: 'from-[#4285F4]/50 to-[#EA4335]/50'
-  },
-  // Animations & Interactive Physics
   {
     name: 'Framer Motion',
     desc: 'Production-ready animations and interactions for React.',
     icon: <SiFramer className="text-white" />,
-    gradient: 'from-white/30 to-cyber-purple/50'
+    gradient: 'from-white/30 to-cyber-purple/50',
+    category: 'Frontend'
   },
   {
     name: 'GSAP',
     desc: 'Professional-grade JavaScript animation suite.',
     icon: <SiGreensock className="text-[#88CE02]" />,
-    gradient: 'from-[#88CE02]/50 to-[#339933]/50'
+    gradient: 'from-[#88CE02]/50 to-[#339933]/50',
+    category: 'Frontend'
   },
   {
     name: 'Lenis',
     desc: 'Smooth scroll experience for modern web.',
     icon: <FaCode className="text-white" />,
-    gradient: 'from-white/20 to-gray-500/30'
+    gradient: 'from-white/20 to-gray-500/30',
+    category: 'Frontend'
   },
   {
     name: 'Matter.js',
     desc: '2D rigid body physics engine for the web.',
     icon: <FaCubes className="text-[#00d2ff]" />,
-    gradient: 'from-[#00d2ff]/50 to-[#7c3aed]/50'
+    gradient: 'from-[#00d2ff]/50 to-[#7c3aed]/50',
+    category: 'Frontend'
   },
-  // Tools & Services
+  // Backend & Services
+  {
+    name: 'Node.js',
+    desc: 'Asynchronous event-driven JavaScript runtime.',
+    icon: <FaNodeJs className="text-[#339933]" />,
+    gradient: 'from-[#339933]/50 to-[#7c3aed]/50',
+    category: 'Backend & Services'
+  },
+  {
+    name: 'Express.js',
+    desc: 'Fast, unopinionated, minimalist web framework for Node.js.',
+    icon: <SiExpress className="text-white" />,
+    gradient: 'from-white/30 to-gray-500/30',
+    category: 'Backend & Services'
+  },
+  {
+    name: 'REST APIs',
+    desc: 'Designing and consuming robust RESTful architectures.',
+    icon: <FaServer className="text-[#00d2ff]" />,
+    gradient: 'from-[#00d2ff]/50 to-[#7c3aed]/50',
+    category: 'Backend & Services'
+  },
+  {
+    name: 'MongoDB',
+    desc: 'NoSQL document database for scalable applications.',
+    icon: <SiMongodb className="text-[#47A248]" />,
+    gradient: 'from-[#47A248]/50 to-[#339933]/50',
+    category: 'Backend & Services'
+  },
+  {
+    name: 'Better-Auth',
+    desc: 'Modern and flexible authentication for React.',
+    icon: <FaShieldAlt className="text-accent-primary" />,
+    gradient: 'from-accent-primary/50 to-accent-secondary/50',
+    category: 'Backend & Services'
+  },
+  {
+    name: 'JWT',
+    desc: 'Stateless authentication via JSON Web Tokens.',
+    icon: <SiJsonwebtokens className="text-white" />,
+    gradient: 'from-white/30 to-[#ff9d00]/50',
+    category: 'Backend & Services'
+  },
+  {
+    name: 'Google Auth',
+    desc: 'Secure OAuth 2.0 authentication integration.',
+    icon: <FaGoogle className="text-[#4285F4]" />,
+    gradient: 'from-[#4285F4]/50 to-[#EA4335]/50',
+    category: 'Backend & Services'
+  },
   {
     name: 'Stripe',
     desc: 'Financial infrastructure and payment processing.',
     icon: <FaStripe className="text-[#008CDD]" />,
-    gradient: 'from-[#008CDD]/50 to-[#00d2ff]/50'
+    gradient: 'from-[#008CDD]/50 to-[#00d2ff]/50',
+    category: 'Backend & Services'
   },
+  // DevOps & Tools
   {
     name: 'Git',
     desc: 'Distributed version control system.',
     icon: <FaGitAlt className="text-[#F05032]" />,
-    gradient: 'from-[#F05032]/50 to-[#ff9d00]/50'
+    gradient: 'from-[#F05032]/50 to-[#ff9d00]/50',
+    category: 'DevOps & Tools'
   },
   {
     name: 'GitHub',
     desc: 'Collaborative development using Git workflows and Actions.',
     icon: <FaGithub className="text-white" />,
-    gradient: 'from-white/20 to-cyber-purple/50'
+    gradient: 'from-white/20 to-cyber-purple/50',
+    category: 'DevOps & Tools'
   },
   {
     name: 'Vercel',
     desc: 'Cloud platform for static sites and Serverless Functions.',
     icon: <SiVercel className="text-white" />,
-    gradient: 'from-white/30 to-gray-500/30'
+    gradient: 'from-white/30 to-gray-500/30',
+    category: 'DevOps & Tools'
   }
 ];
 
-const SkillCard = ({ skill, index }) => {
+const SkillCard = ({ skill }) => {
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, scale: 0.9 },
     visible: { 
       opacity: 1, 
-      y: 0,
-      transition: { duration: 0.5 }
-    }
+      scale: 1,
+      transition: { duration: 0.4 }
+    },
+    exit: { opacity: 0, scale: 0.9, transition: { duration: 0.3 } }
   };
 
   return (
     <motion.div
       variants={itemVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      layout
       className="group relative"
     >
       <div className="absolute -inset-2 bg-gradient-to-br from-cyan-400/20 via-blue-500/20 to-purple-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2.5rem]" />
@@ -228,28 +256,24 @@ const SkillCard = ({ skill, index }) => {
 };
 
 const Skills = () => {
+  const [activeTab, setActiveTab] = useState('All');
+  const tabs = ['All', 'Frontend', 'Backend & Services', 'DevOps & Tools'];
   const tags = skillsData.map(s => s.name);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
+  const filteredSkills = activeTab === 'All' 
+    ? skillsData 
+    : skillsData.filter(skill => skill.category === activeTab);
 
   return (
     <motion.section 
-      initial="hidden"
-      whileInView="visible"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-100px" }}
       className="py-20 md:py-32 px-6 max-w-7xl mx-auto scroll-mt-32" 
       data-purpose="skills-grid" 
       id="skills"
     >
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 px-4">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 px-4">
         <div className="space-y-2">
           <h2 className="text-4xl md:text-5xl font-heading font-light uppercase tracking-tighter text-slate-100">
             Technical <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Matrix</span>
@@ -261,13 +285,37 @@ const Skills = () => {
         <div className="h-px flex-1 bg-gradient-to-r from-accent-primary/30 via-accent-secondary/20 to-transparent hidden md:block mb-4"></div>
       </div>
 
-      <motion.div 
-        variants={containerVariants}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-32 px-4"
-      >
-        {skillsData.map((skill, index) => (
-          <SkillCard key={skill.name} skill={skill} index={index} />
+      {/* Interactive Tabs */}
+      <div className="flex flex-wrap justify-center gap-4 mb-16 px-4">
+        {tabs.map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            className={`relative px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-colors duration-300 ${
+              activeTab === tab
+                ? 'text-white'
+                : 'text-slate-400 hover:text-white bg-white/5 border border-white/10 hover:bg-white/10'
+            }`}
+          >
+            {activeTab === tab && (
+              <motion.div
+                layoutId="activeTab"
+                className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full shadow-[0_0_15px_rgba(0,229,255,0.4)]"
+                initial={false}
+                transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+              />
+            )}
+            <span className="relative z-10">{tab}</span>
+          </button>
         ))}
+      </div>
+
+      <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-32 px-4 min-h-[400px]">
+        <AnimatePresence mode="popLayout">
+          {filteredSkills.map((skill) => (
+            <SkillCard key={skill.name} skill={skill} />
+          ))}
+        </AnimatePresence>
       </motion.div>
 
       <div className="mt-20 pt-20 border-t border-foreground-primary/5 relative">

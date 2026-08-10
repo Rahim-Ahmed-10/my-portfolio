@@ -43,6 +43,10 @@ const Hero = () => {
             alt="Md Rahim Miah Portrait"
             className="w-full h-full object-cover scale-105 transition-transform duration-700 group-hover:scale-125"
             src={Image}
+            fetchpriority="high"
+            decoding="sync"
+            width="288"
+            height="288"
           />
           {/* Scanning Line Effect */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent-primary/10 to-transparent h-1/2 w-full animate-scan pointer-events-none" />

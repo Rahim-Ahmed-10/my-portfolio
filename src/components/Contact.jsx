@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaLinkedinIn, FaGithub, FaEnvelope, FaFacebookF, FaWhatsapp } from 'react-icons/fa6';
+import { FaLinkedinIn, FaGithub, FaFacebookF, FaWhatsapp } from 'react-icons/fa6';
 import toast, { Toaster } from 'react-hot-toast';
-import { resumeUrl } from '../data/config';
+import ContactForm from './ContactForm';
 
 const Contact = () => {
   const contactLinks = [
@@ -45,29 +45,6 @@ const Contact = () => {
           secondary: '#181C24',
         },
       })
-    },
-    {
-      name: 'Email',
-      icon: <FaEnvelope />,
-      href: 'mailto:rahimahmed01690@gmail.com',
-      isPrimary: true,
-      style: 'bg-gradient-to-r from-accent-primary to-accent-secondary text-white',
-      hoverGlow: 'hover:shadow-[0_0_30px_rgba(var(--accent-primary),0.4)]',
-      onClick: (e) => {
-        navigator.clipboard.writeText('rahimahmed01690@gmail.com');
-        toast.success('Email copied to clipboard!', {
-          style: {
-            background: 'rgba(24, 28, 36, 0.9)',
-            color: '#fff',
-            border: '1px solid rgba(56, 189, 248, 0.4)',
-            backdropFilter: 'blur(10px)'
-          },
-          iconTheme: {
-            primary: '#38BDF8',
-            secondary: '#181C24',
-          },
-        });
-      }
     }
   ];
 
@@ -89,32 +66,10 @@ const Contact = () => {
         </div>
 
         <p className="text-foreground-secondary max-w-lg mx-auto font-light text-lg leading-relaxed relative z-10">
-          Currently seeking new opportunities to innovate and build impactful digital experiences. You can reach me directly at <a href="mailto:rahimahmed01690@gmail.com" className="text-accent-primary hover:text-accent-secondary hover:underline transition-colors font-medium">rahimahmed01690@gmail.com</a> or my inbox is always open.
+          Currently seeking new opportunities to innovate and build impactful digital experiences. Drop a message below or connect with me through my social channels.
         </p>
 
-        {/* --- QR Code Section --- */}
-        <div className="flex justify-center pt-6 pb-2 relative z-10">
-          <motion.div 
-            whileHover={{ scale: 1.05 }}
-            className="group relative flex flex-col items-center"
-          >
-            {/* Subtle pulse glow */}
-            <div className="absolute -inset-4 bg-accent-primary/20 rounded-[2.5rem] blur-xl opacity-50 group-hover:opacity-80 animate-pulse pointer-events-none transition-opacity duration-500" />
-            
-            <div className="relative glass-panel iridescent-border p-5 rounded-[2rem] bg-surface-elevated/40 backdrop-blur-md">
-              <div className="bg-white p-3 rounded-2xl flex items-center justify-center">
-                <img 
-                  src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(resumeUrl)}`} 
-                  alt="Scan to Connect or View Resume" 
-                  className="w-32 h-32 md:w-40 md:h-40 object-contain rounded-xl"
-                />
-              </div>
-              <div className="absolute -top-4 -right-4 bg-accent-primary text-white text-[9px] font-bold uppercase tracking-widest px-4 py-2 rounded-full shadow-lg shadow-accent-primary/30 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 whitespace-nowrap z-20">
-                Scan to Connect / View Resume
-              </div>
-            </div>
-          </motion.div>
-        </div>
+        <ContactForm />
 
         <div className="flex flex-wrap justify-center gap-6 pt-8 relative z-10">
           {contactLinks.map((link, index) => (
@@ -123,10 +78,10 @@ const Contact = () => {
               whileHover={{ scale: 1.05, y: -5 }}
               whileTap={{ scale: 0.95 }}
               href={link.href}
-              target={link.isPrimary ? undefined : "_blank"}
-              rel={link.isPrimary ? undefined : "noopener noreferrer"}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={link.onClick}
-              className={`group flex items-center gap-4 px-10 py-5 rounded-[1.5rem] transition-all duration-500 font-heading font-black text-[10px] uppercase tracking-[0.2em] ${link.style} ${link.hoverGlow} ${link.isPrimary ? 'text-white shadow-xl shadow-accent-primary/20' : 'text-foreground-primary hover:bg-white/5'}`}
+              className={`group flex items-center gap-4 px-10 py-5 rounded-[1.5rem] transition-all duration-500 font-heading font-black text-[10px] uppercase tracking-[0.2em] ${link.style} ${link.hoverGlow} text-foreground-primary hover:bg-white/5`}
             >
               <span className="text-lg transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
                 {link.icon}

@@ -9,6 +9,7 @@ export const projectsData = [
     githubClient: "https://github.com/Rahim-Ahmed-10/event-hive-client",
     githubServer: "https://github.com/Rahim-Ahmed-10/event-hive-server",
     image: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&q=80&w=1920',
+    video: '/event-hive-preview.mp4',
     color: 'cyber-blue',
     reverse: false,
     techStack: ['React', 'Next.js', 'Tailwind CSS', 'Better-Auth', 'MongoDB', 'Node.js', 'Express.js'],
