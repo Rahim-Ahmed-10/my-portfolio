@@ -1,7 +1,32 @@
 import React from 'react';
-import { FaFolder, FaCog, FaRocket } from 'react-icons/fa';
+import { FaFolder, FaCog, FaRocket, FaHtml5, FaCss3Alt, FaShieldAlt } from 'react-icons/fa';
+import { 
+  SiReact, SiNextdotjs, SiTailwindcss, SiMongodb, SiNodedotjs, 
+  SiExpress, SiStripe, SiFramer, SiVite, SiReactrouter, SiJavascript
+} from 'react-icons/si';
 import { motion } from 'framer-motion';
 import { projectsData } from '../data/projects';
+
+const getTechIcon = (tech) => {
+  const iconMap = {
+    'React': <SiReact className="text-[#61DAFB]" />,
+    'React 19': <SiReact className="text-[#61DAFB]" />,
+    'Next.js': <SiNextdotjs className="text-white" />,
+    'Tailwind CSS': <SiTailwindcss className="text-[#06B6D4]" />,
+    'Better-Auth': <FaShieldAlt className="text-purple-400" />,
+    'MongoDB': <SiMongodb className="text-[#47A248]" />,
+    'Node.js': <SiNodedotjs className="text-[#339933]" />,
+    'Express.js': <SiExpress className="text-white" />,
+    'Stripe': <SiStripe className="text-[#008CDD]" />,
+    'Framer Motion': <SiFramer className="text-white" />,
+    'Vite': <SiVite className="text-[#646CFF]" />,
+    'React Router': <SiReactrouter className="text-[#CA4245]" />,
+    'HTML5': <FaHtml5 className="text-[#E34F26]" />,
+    'CSS3': <FaCss3Alt className="text-[#1572B6]" />,
+    'JavaScript': <SiJavascript className="text-[#F7DF1E]" />
+  };
+  return iconMap[tech] || <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />;
+};
 
 const Projects = () => {
   return (
@@ -35,7 +60,7 @@ const Projects = () => {
             <div className={`relative glass-panel border border-white/10 hover:border-cyan-400/50 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(0,229,255,0.15)] p-6 md:p-10 rounded-[3rem] flex flex-col ${project.reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-10 items-center transition-all duration-500 z-10`}>
               
               {/* Project Image / Video */}
-              <div className="w-full lg:w-1/2 aspect-[16/10] rounded-[2rem] overflow-hidden iridescent-border relative group/media shadow-2xl shrink-0">
+              <div className="w-full lg:w-1/2 aspect-[16/10] rounded-[2rem] overflow-hidden iridescent-border relative group/media shadow-2xl shrink-0 bg-slate-900">
                 {project.video ? (
                   <>
                     {/* Background Video */}
@@ -104,7 +129,8 @@ const Projects = () => {
                 {project.techStack && (
                   <div className="flex flex-wrap gap-2 pt-2">
                     {project.techStack.map(tech => (
-                      <span key={tech} className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                      <span key={tech} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-colors text-[10px] font-bold uppercase tracking-wider text-slate-300 shadow-inner">
+                        {getTechIcon(tech)}
                         {tech}
                       </span>
                     ))}
@@ -119,12 +145,12 @@ const Projects = () => {
                         href={project.githubClient}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 text-xl font-medium transition-all duration-300 shadow-md text-slate-100 hover:text-white hover:-translate-y-1"
+                        className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 text-xl font-medium transition-all duration-300 shadow-md text-slate-100 hover:text-cyan-400 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(0,229,255,0.3)]"
                       >
                         <FaFolder />
                       </a>
-                      <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1 bg-slate-800 text-xs text-white rounded-md opacity-0 group-hover/tooltip:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-lg border border-white/10 z-50">
-                        Client Repo (Frontend)
+                      <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-slate-900/90 backdrop-blur-md text-[10px] font-bold tracking-wider uppercase text-cyan-50 rounded-lg opacity-0 translate-y-2 group-hover/tooltip:opacity-100 group-hover/tooltip:translate-y-0 transition-all duration-300 whitespace-nowrap pointer-events-none shadow-[0_0_20px_rgba(0,229,255,0.2)] border border-cyan-400/30 z-50">
+                        Frontend Repo
                       </div>
                     </div>
                   )}
@@ -135,12 +161,12 @@ const Projects = () => {
                         href={project.githubServer}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/50 text-xl font-medium transition-all duration-300 shadow-md text-slate-100 hover:text-white hover:-translate-y-1"
+                        className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-purple-400/50 text-xl font-medium transition-all duration-300 shadow-md text-slate-100 hover:text-purple-400 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(168,85,247,0.3)]"
                       >
                         <FaCog />
                       </a>
-                      <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1 bg-slate-800 text-xs text-white rounded-md opacity-0 group-hover/tooltip:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-lg border border-white/10 z-50">
-                        Server Repo (Backend)
+                      <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-slate-900/90 backdrop-blur-md text-[10px] font-bold tracking-wider uppercase text-purple-50 rounded-lg opacity-0 translate-y-2 group-hover/tooltip:opacity-100 group-hover/tooltip:translate-y-0 transition-all duration-300 whitespace-nowrap pointer-events-none shadow-[0_0_20px_rgba(168,85,247,0.2)] border border-purple-400/30 z-50">
+                        Backend Repo
                       </div>
                     </div>
                   )}
@@ -151,12 +177,12 @@ const Projects = () => {
                         href={project.livelink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center w-12 h-12 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-400/30 hover:border-cyan-400/80 hover:shadow-[0_0_15px_rgba(0,229,255,0.4)] text-xl font-medium transition-all duration-300 shadow-md text-cyan-50 hover:-translate-y-1"
+                        className="flex items-center justify-center w-12 h-12 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-400/30 hover:border-cyan-400/80 text-xl font-medium transition-all duration-300 shadow-[0_0_15px_rgba(0,229,255,0.1)] hover:shadow-[0_0_25px_rgba(0,229,255,0.5)] text-cyan-400 hover:text-cyan-300 hover:-translate-y-1"
                       >
                         <FaRocket />
                       </a>
-                      <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1 bg-slate-800 text-xs text-cyan-400 rounded-md opacity-0 group-hover/tooltip:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-lg border border-cyan-400/20 z-50">
-                        Live Site
+                      <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-slate-900/90 backdrop-blur-md text-[10px] font-bold tracking-wider uppercase text-cyan-50 rounded-lg opacity-0 translate-y-2 group-hover/tooltip:opacity-100 group-hover/tooltip:translate-y-0 transition-all duration-300 whitespace-nowrap pointer-events-none shadow-[0_0_20px_rgba(0,229,255,0.3)] border border-cyan-400/50 z-50">
+                        Live Demo
                       </div>
                     </div>
                   )}
