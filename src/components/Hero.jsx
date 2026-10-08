@@ -43,7 +43,7 @@ const Hero = () => {
             alt="Md Rahim Miah Portrait"
             className="w-full h-full object-cover scale-105 transition-transform duration-700 group-hover:scale-125"
             src={Image}
-            fetchpriority="high"
+            fetchPriority="high"
             decoding="sync"
             width="288"
             height="288"
