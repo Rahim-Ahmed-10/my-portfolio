@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const navItems = [
     { label: 'ABOUT', id: 'about' },
-    { label: 'STACK', id: 'stack' },
+    { label: 'STACK', id: 'skills' },
     { label: 'EDUCATION', id: 'education' },
     { label: 'PROJECTS', id: 'projects' },
     { label: 'CONTACT', id: 'contact' },
@@ -70,8 +70,8 @@ const Navbar = () => {
     >
       <div
         className={`max-w-7xl mx-auto flex items-center justify-between px-6 py-3 rounded-full transition-all duration-500 border ${scrolled
-            ? 'bg-slate-950/85 backdrop-blur-2xl border-cyan-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.8),0_0_15px_rgba(0,229,255,0.15)]'
-            : 'bg-slate-900/50 backdrop-blur-md border-white/10 shadow-lg'
+          ? 'bg-slate-950/85 backdrop-blur-2xl border-cyan-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.8),0_0_15px_rgba(0,229,255,0.15)]'
+          : 'bg-slate-900/50 backdrop-blur-md border-white/10 shadow-lg'
           }`}
       >
         {/* Brand Logo */}

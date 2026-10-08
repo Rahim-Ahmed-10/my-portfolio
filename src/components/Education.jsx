@@ -34,19 +34,19 @@ const Education = () => {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.6 }
     }
   };
 
   return (
-    <motion.section 
+    <motion.section
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
-      className="py-20 md:py-32 px-6 max-w-7xl mx-auto scroll-mt-32" 
+      className="py-20 md:py-32 px-6 max-w-7xl mx-auto scroll-mt-32"
       id="education"
     >
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 px-4">
@@ -61,7 +61,7 @@ const Education = () => {
         <div className="h-px flex-1 bg-gradient-to-r from-accent-primary/30 via-accent-secondary/20 to-transparent hidden md:block mb-4"></div>
       </div>
 
-      <motion.div 
+      <motion.div
         variants={containerVariants}
         className="max-w-4xl mx-auto space-y-8"
       >

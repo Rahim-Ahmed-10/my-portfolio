@@ -36,98 +36,98 @@ const skillsData = [
     name: 'HTML5',
     desc: 'Semantic structure combined with modern web standards.',
     icon: <FaHtml5 className="text-[#E34F26]" />,
-    gradient: 'from-[#E34F26]/50 to-[#ff9d00]/50',
+    accentColor: '#E34F26',
     category: 'Frontend'
   },
   {
     name: 'CSS3',
     desc: 'Advanced styling, animations, and responsive layouts.',
     icon: <FaCss3Alt className="text-[#1572B6]" />,
-    gradient: 'from-[#1572B6]/50 to-[#00d2ff]/50',
+    accentColor: '#1572B6',
     category: 'Frontend'
   },
   {
     name: 'JavaScript',
     desc: 'Advanced ES6+ logic, async patterns, and functional programming.',
     icon: <SiJavascript className="text-[#F7DF1E]" />,
-    gradient: 'from-[#F7DF1E]/50 to-[#ff9d00]/50',
+    accentColor: '#F7DF1E',
     category: 'Frontend'
   },
   {
     name: 'TypeScript',
     desc: 'Static typing for scalable, maintainable, and error-free codebases.',
     icon: <SiTypescript className="text-[#3178C6]" />,
-    gradient: 'from-[#3178C6]/50 to-[#7c3aed]/50',
+    accentColor: '#3178C6',
     category: 'Frontend'
   },
   {
     name: 'React 19',
     desc: 'Component-based architecture & high-performance state management.',
     icon: <FaReact className="text-[#61DAFB]" />,
-    gradient: 'from-[#61DAFB]/50 to-[#00d2ff]/50',
+    accentColor: '#61DAFB',
     category: 'Frontend'
   },
   {
     name: 'Next.js',
     desc: 'Full-stack React framework with SSR, ISR, and optimized routing.',
     icon: <SiNextdotjs className="text-white" />,
-    gradient: 'from-white/30 to-gray-500/30',
+    accentColor: '#00f0ff',
     category: 'Frontend'
   },
   {
     name: 'React Router',
     desc: 'Declarative routing for React single-page applications.',
     icon: <SiReactrouter className="text-[#CA4245]" />,
-    gradient: 'from-[#CA4245]/50 to-[#ff9d00]/50',
+    accentColor: '#CA4245',
     category: 'Frontend'
   },
   {
     name: 'Tailwind CSS',
     desc: 'Utility-first CSS framework for rapid, responsive UI development.',
     icon: <SiTailwindcss className="text-[#06B6D4]" />,
-    gradient: 'from-[#06B6D4]/50 to-[#00d2ff]/50',
+    accentColor: '#06B6D4',
     category: 'Frontend'
   },
   {
     name: 'HeroUI',
     desc: 'Beautiful, fast and modern React UI library.',
-    icon: <FaCode className="text-white" />,
-    gradient: 'from-white/20 to-cyber-purple/50',
+    icon: <FaCode className="text-cyan-300" />,
+    accentColor: '#00f0ff',
     category: 'Frontend'
   },
   {
     name: 'Radix UI',
     desc: 'Unstyled, accessible components for building high-quality design systems.',
     icon: <SiRadixui className="text-white" />,
-    gradient: 'from-white/20 to-gray-500/30',
+    accentColor: '#a855f7',
     category: 'Frontend'
   },
   {
     name: 'Framer Motion',
     desc: 'Production-ready animations and interactions for React.',
     icon: <SiFramer className="text-white" />,
-    gradient: 'from-white/30 to-cyber-purple/50',
+    accentColor: '#e879f9',
     category: 'Frontend'
   },
   {
     name: 'GSAP',
     desc: 'Professional-grade JavaScript animation suite.',
     icon: <SiGreensock className="text-[#88CE02]" />,
-    gradient: 'from-[#88CE02]/50 to-[#339933]/50',
+    accentColor: '#88CE02',
     category: 'Frontend'
   },
   {
     name: 'Lenis',
     desc: 'Smooth scroll experience for modern web.',
-    icon: <FaCode className="text-white" />,
-    gradient: 'from-white/20 to-gray-500/30',
+    icon: <FaCode className="text-purple-300" />,
+    accentColor: '#c084fc',
     category: 'Frontend'
   },
   {
     name: 'Matter.js',
     desc: '2D rigid body physics engine for the web.',
     icon: <FaCubes className="text-[#00d2ff]" />,
-    gradient: 'from-[#00d2ff]/50 to-[#7c3aed]/50',
+    accentColor: '#00d2ff',
     category: 'Frontend'
   },
   // Backend & Services
@@ -135,56 +135,56 @@ const skillsData = [
     name: 'Node.js',
     desc: 'Asynchronous event-driven JavaScript runtime.',
     icon: <FaNodeJs className="text-[#339933]" />,
-    gradient: 'from-[#339933]/50 to-[#7c3aed]/50',
+    accentColor: '#339933',
     category: 'Backend & Services'
   },
   {
     name: 'Express.js',
     desc: 'Fast, unopinionated, minimalist web framework for Node.js.',
     icon: <SiExpress className="text-white" />,
-    gradient: 'from-white/30 to-gray-500/30',
+    accentColor: '#94a3b8',
     category: 'Backend & Services'
   },
   {
     name: 'REST APIs',
     desc: 'Designing and consuming robust RESTful architectures.',
     icon: <FaServer className="text-[#00d2ff]" />,
-    gradient: 'from-[#00d2ff]/50 to-[#7c3aed]/50',
+    accentColor: '#00d2ff',
     category: 'Backend & Services'
   },
   {
     name: 'MongoDB',
     desc: 'NoSQL document database for scalable applications.',
     icon: <SiMongodb className="text-[#47A248]" />,
-    gradient: 'from-[#47A248]/50 to-[#339933]/50',
+    accentColor: '#47A248',
     category: 'Backend & Services'
   },
   {
     name: 'Better-Auth',
     desc: 'Modern and flexible authentication for React.',
-    icon: <FaShieldAlt className="text-accent-primary" />,
-    gradient: 'from-accent-primary/50 to-accent-secondary/50',
+    icon: <FaShieldAlt className="text-cyan-400" />,
+    accentColor: '#38bdf8',
     category: 'Backend & Services'
   },
   {
     name: 'JWT',
     desc: 'Stateless authentication via JSON Web Tokens.',
-    icon: <SiJsonwebtokens className="text-white" />,
-    gradient: 'from-white/30 to-[#ff9d00]/50',
+    icon: <SiJsonwebtokens className="text-amber-300" />,
+    accentColor: '#f59e0b',
     category: 'Backend & Services'
   },
   {
     name: 'Google Auth',
     desc: 'Secure OAuth 2.0 authentication integration.',
     icon: <FaGoogle className="text-[#4285F4]" />,
-    gradient: 'from-[#4285F4]/50 to-[#EA4335]/50',
+    accentColor: '#4285F4',
     category: 'Backend & Services'
   },
   {
     name: 'Stripe',
     desc: 'Financial infrastructure and payment processing.',
     icon: <FaStripe className="text-[#008CDD]" />,
-    gradient: 'from-[#008CDD]/50 to-[#00d2ff]/50',
+    accentColor: '#008CDD',
     category: 'Backend & Services'
   },
   // DevOps & Tools
@@ -192,63 +192,72 @@ const skillsData = [
     name: 'Git',
     desc: 'Distributed version control system.',
     icon: <FaGitAlt className="text-[#F05032]" />,
-    gradient: 'from-[#F05032]/50 to-[#ff9d00]/50',
+    accentColor: '#F05032',
     category: 'DevOps & Tools'
   },
   {
     name: 'GitHub',
     desc: 'Collaborative development using Git workflows and Actions.',
     icon: <FaGithub className="text-white" />,
-    gradient: 'from-white/20 to-cyber-purple/50',
+    accentColor: '#f1f5f9',
     category: 'DevOps & Tools'
   },
   {
     name: 'Vercel',
     desc: 'Cloud platform for static sites and Serverless Functions.',
     icon: <SiVercel className="text-white" />,
-    gradient: 'from-white/30 to-gray-500/30',
+    accentColor: '#38bdf8',
     category: 'DevOps & Tools'
   }
 ];
 
 const SkillCard = ({ skill }) => {
-  const itemVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
-      transition: { duration: 0.4 }
-    },
-    exit: { opacity: 0, scale: 0.9, transition: { duration: 0.3 } }
-  };
-
   return (
     <motion.div
-      variants={itemVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
       layout
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.3 }}
       className="group relative"
     >
-      <div className="absolute -inset-2 bg-gradient-to-br from-cyan-400/20 via-blue-500/20 to-purple-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2.5rem]" />
-      <div className="relative h-full glass-panel border border-white/10 hover:border-cyan-400/50 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(0,229,255,0.15)] p-8 rounded-[2rem] flex flex-col items-center text-center gap-6 overflow-hidden transition-all duration-500">
-        <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-5xl mb-2 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-inner">
-          {skill.icon}
+      {/* Outer Ambient Dynamic Glow */}
+      <div
+        className="absolute -inset-1 rounded-[2.2rem] opacity-0 group-hover:opacity-40 blur-xl transition-all duration-500"
+        style={{ backgroundColor: skill.accentColor }}
+      />
+
+      {/* Main Glassmorphic Card Frame */}
+      <div className="relative h-full bg-slate-950/70 backdrop-blur-2xl border border-white/10 group-hover:border-cyan-400/50 p-6 sm:p-7 rounded-[2rem] flex flex-col items-center text-center gap-5 overflow-hidden transition-all duration-500 group-hover:-translate-y-2 shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
+
+        {/* Top Accent Line */}
+        <div
+          className="absolute top-0 left-1/2 -translate-x-1/2 h-[2px] w-0 group-hover:w-2/3 transition-all duration-500"
+          style={{ backgroundColor: skill.accentColor }}
+        />
+
+        {/* Dynamic Icon Badge */}
+        <div className="relative w-16 h-16 rounded-2xl bg-slate-900/80 border border-white/10 flex items-center justify-center text-4xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-inner">
+          <div className="relative z-10">{skill.icon}</div>
+          <div
+            className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 blur-md transition-opacity"
+            style={{ backgroundColor: skill.accentColor }}
+          />
         </div>
 
-        <div className="space-y-3">
-          <h3 className="text-xl font-heading font-black tracking-tight text-slate-100">
+        {/* Text Details */}
+        <div className="space-y-2">
+          <h3 className="text-lg font-heading font-extrabold tracking-tight text-slate-100 group-hover:text-cyan-300 transition-colors">
             {skill.name}
           </h3>
-          <p className="text-[11px] leading-relaxed text-slate-400 font-light uppercase tracking-wider opacity-80 group-hover:opacity-100 transition-opacity">
+          <p className="text-[11px] leading-relaxed text-slate-400 font-normal tracking-wide">
             {skill.desc}
           </p>
         </div>
 
-        {/* Decorative corner element */}
-        <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
-          <div className="w-4 h-4 border-t-2 border-r-2 border-accent-primary rounded-tr-sm" />
+        {/* Decorative Hologram Corner Line */}
+        <div className="absolute top-0 right-0 p-3 opacity-20 group-hover:opacity-80 transition-opacity">
+          <div className="w-3 h-3 border-t-2 border-r-2 border-cyan-400 rounded-tr-xs" />
         </div>
       </div>
     </motion.div>
@@ -260,48 +269,57 @@ const Skills = () => {
   const tabs = ['All', 'Frontend', 'Backend & Services', 'DevOps & Tools'];
   const tags = skillsData.map(s => s.name);
 
-  const filteredSkills = activeTab === 'All' 
-    ? skillsData 
+  const filteredSkills = activeTab === 'All'
+    ? skillsData
     : skillsData.filter(skill => skill.category === activeTab);
 
   return (
-    <motion.section 
+    <motion.section
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-100px" }}
-      className="py-20 md:py-32 px-6 max-w-7xl mx-auto scroll-mt-32" 
-      data-purpose="skills-grid" 
-      id="skills"
+      className="py-24 md:py-32 px-6 max-w-[1440px] mx-auto scroll-mt-32 relative overflow-hidden"
+      data-purpose="skills-grid"
+      id="stack"
     >
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 px-4">
-        <div className="space-y-2">
-          <h2 className="text-4xl md:text-5xl font-heading font-light uppercase tracking-tighter text-slate-100">
-            Technical <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Matrix</span>
+      {/* Background Ambient Glows */}
+      <div className="absolute top-1/3 -left-32 w-96 h-96 bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-purple-500/10 rounded-full blur-[140px] pointer-events-none" />
+
+      {/* Header Section */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 px-2 relative z-10">
+        <div className="space-y-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-cyan-500/30 bg-cyan-950/30 backdrop-blur-md">
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+            <span className="text-[10px] font-mono font-bold tracking-[0.25em] text-cyan-300 uppercase">
+              Core Capabilities
+            </span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight text-slate-100">
+            Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500">Matrix</span>
           </h2>
-          <p className="text-slate-400 text-sm font-light max-w-md">
-            Architecting high-performance digital solutions with modern stacks and precision engineering.
+          <p className="text-slate-400 text-xs sm:text-sm font-normal max-w-md leading-relaxed">
+            Architecting high-performance digital solutions with modern stacks, resilient backends, and precision engineering.
           </p>
         </div>
-        <div className="h-px flex-1 bg-gradient-to-r from-accent-primary/30 via-accent-secondary/20 to-transparent hidden md:block mb-4"></div>
+        <div className="h-px flex-1 bg-gradient-to-r from-cyan-500/30 via-purple-500/20 to-transparent hidden md:block mb-4" />
       </div>
 
-      {/* Interactive Tabs */}
-      <div className="flex flex-wrap justify-center gap-4 mb-16 px-4">
+      {/* Interactive Floating Filter Tabs */}
+      <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-14 px-2 relative z-10">
         {tabs.map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`relative px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-colors duration-300 ${
-              activeTab === tab
-                ? 'text-white'
-                : 'text-slate-400 hover:text-white bg-white/5 border border-white/10 hover:bg-white/10'
-            }`}
+            className={`relative px-6 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-widest transition-all duration-300 select-none cursor-pointer ${activeTab === tab
+                ? 'text-cyan-300 shadow-[0_0_20px_rgba(0,240,255,0.3)]'
+                : 'text-slate-400 hover:text-slate-100 bg-slate-900/60 border border-white/10 hover:bg-slate-800/80'
+              }`}
           >
             {activeTab === tab && (
               <motion.div
-                layoutId="activeTab"
-                className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full shadow-[0_0_15px_rgba(0,229,255,0.4)]"
-                initial={false}
+                layoutId="activeSkillsTab"
+                className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-purple-500/20 border border-cyan-400/60 rounded-full"
                 transition={{ type: 'spring', stiffness: 400, damping: 30 }}
               />
             )}
@@ -310,7 +328,8 @@ const Skills = () => {
         ))}
       </div>
 
-      <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-32 px-4 min-h-[400px]">
+      {/* Responsive Grid */}
+      <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-28 px-2 relative z-10 min-h-[400px]">
         <AnimatePresence mode="popLayout">
           {filteredSkills.map((skill) => (
             <SkillCard key={skill.name} skill={skill} />
@@ -318,20 +337,25 @@ const Skills = () => {
         </AnimatePresence>
       </motion.div>
 
-      <div className="mt-20 pt-20 border-t border-foreground-primary/5 relative">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-8 bg-slate-950 text-[10px] font-bold uppercase tracking-[0.4em] text-cyan-400/50">
-          Advanced Physics Simulation
+      {/* Matter.js Physics Interaction Container */}
+      <div className="mt-16 pt-16 border-t border-white/10 relative z-10">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-6 py-1 bg-slate-950 border border-cyan-500/30 rounded-full text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-cyan-300 shadow-[0_0_15px_rgba(0,240,255,0.2)]">
+          Interactive Physics Engine
         </div>
-        <div className="flex items-center gap-4 mb-12 justify-center">
-          <h3 className="text-sm font-heading font-bold uppercase tracking-widest text-cyan-400 flex items-center gap-2">
+
+        <div className="flex items-center gap-3 mb-8 justify-center">
+          <h3 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-cyan-400 flex items-center gap-2">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
             </span>
-            Gravity Interaction
+            Gravity & Collisions
           </h3>
         </div>
-        <PhysicsCanvas tags={tags} />
+
+        <div className="rounded-3xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl p-4 shadow-2xl relative overflow-hidden">
+          <PhysicsCanvas tags={tags} />
+        </div>
       </div>
     </motion.section>
   );
