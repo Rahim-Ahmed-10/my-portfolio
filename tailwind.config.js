@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'sans-serif'],
-        heading: ['Space Grotesk', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
+        heading: ['Bebas Neue', 'sans-serif'],
       },
       colors: {
         surface: {
