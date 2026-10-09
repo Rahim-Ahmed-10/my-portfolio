@@ -42,8 +42,8 @@ An in-depth explanation of why this project was built, the problem it solves, an
 ---
 
 ## 🌐 Live Demo & Screenshots
-- 🔗 **Live Website:** [your-project-link.com](https://your-project-link.com)
-- 📄 **Documentation / Resume:** [Link Here](https://your-link.com)
+- 🔗 **Live Website:** [your-project-link.com](https://rahim-digital-portfolio.netlify.app)
+- 📄 **Documentation / Resume:** [Link Here](https://drive.google.com/file/d/1nS6HRkIXMLqlKWQaKV_yCAdHcGJckC8j/view?usp=sharing)
 
 > Add project screenshots or video GIFs here to showcase the UI.
 
@@ -62,7 +62,7 @@ Installation Steps
 Clone the repository:
 
 Bash
-git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
+git clone [https://github.com/your-username/your-repo-name.git](https://github.com/Rahim-Ahmed-10)
 Navigate into the directory:
 
 Bash
@@ -112,7 +112,7 @@ Distributed under the MIT License. See LICENSE for more information.
 👤 Author & Contact
 Developer: MD RAHIM MIAH
 
-Portfolio: rahim-digital-portfolio.netlify.app
+Portfolio: "https://rahim-digital-portfolio.netlify.app"
 
 GitHub: @Rahim-Ahmed-10
 
