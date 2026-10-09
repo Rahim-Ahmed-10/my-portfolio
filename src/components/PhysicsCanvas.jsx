@@ -4,24 +4,33 @@ import Matter from 'matter-js';
 const PhysicsCanvas = ({ tags = [] }) => {
   const sceneRef = useRef(null);
   const engineRef = useRef(Matter.Engine.create());
-  const bodiesRef = useRef([]);
 
-  const tagBg = 'rgba(0, 210, 255, 0.8)';
-  const tagStroke = 'rgba(124, 58, 237, 0.5)';
-  const tagText = '#FFFFFF';
+  // Ultra-Modern Cyber Glassmorphic Color Palette
+  const colorPalette = [
+    { bg: 'rgba(15, 23, 42, 0.85)', stroke: '#00f0ff', text: '#38bdf8' },
+    { bg: 'rgba(15, 23, 42, 0.85)', stroke: '#a855f7', text: '#c084fc' },
+    { bg: 'rgba(15, 23, 42, 0.85)', stroke: '#3b82f6', text: '#60a5fa' },
+    { bg: 'rgba(15, 23, 42, 0.85)', stroke: '#34d399', text: '#6ee7b7' },
+  ];
 
   useEffect(() => {
+    if (!sceneRef.current) return;
+
     const engine = engineRef.current;
-    engine.gravity.y = 1.5; // Slightly stronger gravity for 'sudden' effect
-    // ... rest of the logic remains same but using these constants
+    engine.gravity.y = 1.1; // Kinetic smooth antigravity fall
+
+    const width = sceneRef.current.clientWidth || 800;
+    const height = 400;
+
     const render = Matter.Render.create({
       element: sceneRef.current,
       engine: engine,
       options: {
-        width: sceneRef.current.clientWidth,
-        height: 400,
+        width: width,
+        height: height,
         wireframes: false,
         background: 'transparent',
+        pixelRatio: window.devicePixelRatio || 1,
       },
     });
 
@@ -29,99 +38,109 @@ const PhysicsCanvas = ({ tags = [] }) => {
     Matter.Runner.run(runner, engine);
     Matter.Render.run(render);
 
-    // Create boundaries
-    const ground = Matter.Bodies.rectangle(
-      sceneRef.current.clientWidth / 2,
-      410,
-      sceneRef.current.clientWidth,
-      20,
-      { isStatic: true, render: { visible: false } }
-    );
-    const leftWall = Matter.Bodies.rectangle(
-      -10,
-      200,
-      20,
-      400,
-      { isStatic: true, render: { visible: false } }
-    );
-    const rightWall = Matter.Bodies.rectangle(
-      sceneRef.current.clientWidth + 10,
-      200,
-      20,
-      400,
-      { isStatic: true, render: { visible: false } }
-    );
+    // Create Boundaries
+    const ground = Matter.Bodies.rectangle(width / 2, height + 10, width, 20, {
+      isStatic: true,
+      render: { visible: false },
+    });
+    const leftWall = Matter.Bodies.rectangle(-10, height / 2, 20, height, {
+      isStatic: true,
+      render: { visible: false },
+    });
+    const rightWall = Matter.Bodies.rectangle(width + 10, height / 2, 20, height, {
+      isStatic: true,
+      render: { visible: false },
+    });
 
     Matter.Composite.add(engine.world, [ground, leftWall, rightWall]);
 
+    // Measure text width using offscreen canvas
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     ctx.font = 'bold 12px "Space Grotesk", sans-serif';
 
-    // Create tags
+    // Create Tag Bodies with dynamic cyber styling
     const bodies = tags.map((tag, i) => {
-      const x = Math.random() * sceneRef.current.clientWidth;
-      const y = -100 - i * 50;
-      
-      const textWidth = ctx.measureText(tag).width;
-      const width = textWidth + 40; // Add padding
+      const x = Math.random() * (width - 120) + 60;
+      const y = -50 - i * 45;
 
-      const body = Matter.Bodies.rectangle(x, y, width, 40, {
+      const textWidth = ctx.measureText(tag).width;
+      const bodyWidth = Math.max(textWidth + 48, 96);
+      const colorScheme = colorPalette[i % colorPalette.length];
+
+      const body = Matter.Bodies.rectangle(x, y, bodyWidth, 40, {
         chamfer: { radius: 20 },
-        restitution: 0.8, // Bouncy feel
+        restitution: 0.8, // Ultra kinetic bouncy physics
         friction: 0.1,
+        frictionAir: 0.015,
         render: {
-          fillStyle: tagBg,
-          strokeStyle: tagStroke,
-          lineWidth: 2,
+          fillStyle: colorScheme.bg,
+          strokeStyle: colorScheme.stroke,
+          lineWidth: 1.5,
         },
       });
+
+      // Custom property to store colors for text rendering
+      body.customMeta = {
+        label: tag,
+        textColor: colorScheme.text,
+        strokeColor: colorScheme.stroke,
+      };
+
       return body;
     });
 
-    bodiesRef.current = bodies;
+    Matter.Composite.add(engine.world, bodies);
 
-    // Custom renderer for text
-    const drawText = () => {
+    // Custom Renderer for Neon Pill Typography & Hologram Glow
+    const drawCustomCanvas = () => {
       const context = render.context;
-      bodies.forEach((body, i) => {
+      bodies.forEach((body) => {
         const { x, y } = body.position;
         const angle = body.angle;
+        const { label, textColor, strokeColor } = body.customMeta;
+
         context.save();
         context.translate(x, y);
         context.rotate(angle);
+
+        // Neon Glow Effect around physics pills
+        context.shadowColor = strokeColor;
+        context.shadowBlur = 10;
+
+        // Render Typography Label
         context.textAlign = 'center';
         context.textBaseline = 'middle';
-        context.font = 'bold 12px "Space Grotesk", sans-serif';
-        context.fillStyle = '#FFFFFF';
-        context.fillText(tags[i], 0, 0);
+        context.font = 'bold 12px "Space Grotesk", system-ui, sans-serif';
+        context.fillStyle = textColor;
+        context.fillText(label, 0, 0);
+
         context.restore();
       });
     };
 
-    Matter.Events.on(render, 'afterRender', drawText);
+    Matter.Events.on(render, 'afterRender', drawCustomCanvas);
 
-    Matter.Composite.add(engine.world, bodies);
-
-    // Mouse control
+    // Mouse Interaction with Spring Physics
     const mouse = Matter.Mouse.create(render.canvas);
     const mouseConstraint = Matter.MouseConstraint.create(engine, {
       mouse: mouse,
       constraint: {
         stiffness: 0.2,
-        render: {
-          visible: false,
-        },
+        render: { visible: false },
       },
     });
 
     Matter.Composite.add(engine.world, mouseConstraint);
     render.mouse = mouse;
 
+    // Responsive Window Resize Handler
     const handleResize = () => {
-      render.canvas.width = sceneRef.current.clientWidth;
-      Matter.Body.setPosition(ground, { x: sceneRef.current.clientWidth / 2, y: 410 });
-      Matter.Body.setPosition(rightWall, { x: sceneRef.current.clientWidth + 10, y: 200 });
+      if (!sceneRef.current) return;
+      const newWidth = sceneRef.current.clientWidth;
+      render.canvas.width = newWidth;
+      Matter.Body.setPosition(ground, { x: newWidth / 2, y: height + 10 });
+      Matter.Body.setPosition(rightWall, { x: newWidth + 10, y: height / 2 });
     };
 
     window.addEventListener('resize', handleResize);
@@ -129,7 +148,7 @@ const PhysicsCanvas = ({ tags = [] }) => {
     return () => {
       Matter.Render.stop(render);
       Matter.Runner.stop(runner);
-      Matter.Events.off(render, 'afterRender', drawText);
+      Matter.Events.off(render, 'afterRender', drawCustomCanvas);
       Matter.Composite.clear(engine.world);
       Matter.Engine.clear(engine);
       if (render.canvas) {
@@ -140,13 +159,24 @@ const PhysicsCanvas = ({ tags = [] }) => {
   }, [tags]);
 
   return (
-    <div className="w-full relative py-20 overflow-hidden" style={{ minHeight: '400px' }}>
-      <div className="absolute inset-0 z-0 opacity-10">
-        <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyber-blue via-transparent to-transparent"></div>
+    <div className="w-full relative overflow-hidden rounded-3xl border border-white/10 bg-slate-950/80 backdrop-blur-2xl shadow-2xl" style={{ minHeight: '400px' }}>
+
+      {/* Background Cyber Grid Pattern */}
+      <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#00f0ff_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+
+      {/* Subtle Radial Ambient Glow */}
+      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+        <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyan-500/40 via-purple-500/10 to-transparent" />
       </div>
-      <div ref={sceneRef} className="w-full h-[400px] cursor-grab active:cursor-grabbing" />
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 pointer-events-none text-cyber-blue/50 text-[10px] uppercase tracking-widest font-bold">
-        Interactive Physics Environment
+
+      <div ref={sceneRef} className="w-full h-[400px] cursor-grab active:cursor-grabbing relative z-10" />
+
+      {/* Floating Pill Badge Footer */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-none z-20 px-4 py-1.5 rounded-full bg-slate-950/80 border border-cyan-500/30 backdrop-blur-md">
+        <span className="text-cyan-300 text-[10px] font-mono font-bold uppercase tracking-[0.25em] flex items-center gap-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+          Drag & Toss Tech Pills
+        </span>
       </div>
     </div>
   );

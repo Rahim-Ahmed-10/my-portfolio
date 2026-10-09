@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const navItems = [
     { label: 'ABOUT', id: 'about' },
-    { label: 'STACK', id: 'skills' },
+    { label: 'STACK', id: 'stack' },
     { label: 'EDUCATION', id: 'education' },
     { label: 'PROJECTS', id: 'projects' },
     { label: 'CONTACT', id: 'contact' },
@@ -24,7 +24,7 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Precise Active Section Tracking
+  // Intersection Observer for Active Section Tracking
   useEffect(() => {
     const handleObserver = (entries) => {
       entries.forEach((entry) => {
@@ -55,7 +55,7 @@ const Navbar = () => {
 
     const targetElement = document.getElementById(id);
     if (targetElement) {
-      const yOffset = -90; // Header height compensation
+      const yOffset = -110; // Header height compensation to prevent overlapping
       const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
@@ -66,36 +66,40 @@ const Navbar = () => {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="fixed top-0 left-0 w-full z-50 px-4 md:px-8 py-4 transition-all duration-300"
+      className="fixed top-0 left-0 w-full z-[100] px-4 md:px-8 xl:px-12 py-3 transition-all duration-300 pointer-events-auto"
     >
       <div
-        className={`max-w-7xl mx-auto flex items-center justify-between px-6 py-3 rounded-full transition-all duration-500 border ${scrolled
-          ? 'bg-slate-950/85 backdrop-blur-2xl border-cyan-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.8),0_0_15px_rgba(0,229,255,0.15)]'
-          : 'bg-slate-900/50 backdrop-blur-md border-white/10 shadow-lg'
+        className={`max-w-[1440px] mx-auto flex items-center justify-between px-6 py-3 rounded-full transition-all duration-500 border ${scrolled
+            ? 'bg-slate-950/90 backdrop-blur-2xl border-cyan-500/30 shadow-[0_10px_35px_rgba(0,0,0,0.9),0_0_20px_rgba(0,240,255,0.15)]'
+            : 'bg-slate-900/50 backdrop-blur-md border-white/10 shadow-lg'
           }`}
       >
-        {/* Brand Logo */}
+        {/* Crystal Clear Brand Logo */}
         <a
           href="#hero"
           onClick={(e) => handleSmoothScroll(e, 'hero')}
-          className="flex items-center gap-3 group cursor-pointer"
+          className="flex items-center gap-3.5 group cursor-pointer select-none"
         >
-          <div className="relative flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-400 to-purple-600 font-black text-white text-base shadow-[0_0_15px_rgba(0,229,255,0.4)] group-hover:scale-105 transition-transform">
-            R
-            <div className="absolute inset-0 rounded-xl bg-cyan-400 blur-sm opacity-40 group-hover:opacity-80 transition-opacity" />
+          <div className="relative flex items-center justify-center w-10 h-10 rounded-2xl bg-slate-950 border border-cyan-400/60 font-mono font-black text-white text-lg shadow-[0_0_20px_rgba(0,240,255,0.4)] group-hover:border-cyan-300 group-hover:scale-105 transition-all duration-300 overflow-hidden">
+            <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 via-white to-purple-400 drop-shadow-[0_2px_8px_rgba(0,240,255,0.8)]">
+              R
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-blue-500/10 to-purple-600/30 opacity-80 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute -inset-1 rounded-2xl bg-cyan-400/30 blur-md opacity-40 group-hover:opacity-80 transition-opacity" />
           </div>
+
           <div className="flex flex-col">
-            <span className="text-xs font-black uppercase tracking-[0.2em] text-slate-100 group-hover:text-cyan-400 transition-colors">
+            <span className="text-xs xl:text-sm font-black uppercase tracking-[0.2em] text-slate-100 group-hover:text-cyan-300 transition-colors">
               Md Rahim Miah
             </span>
-            <span className="text-[9px] font-semibold tracking-widest text-cyan-400/80 uppercase">
+            <span className="text-[9px] xl:text-[10px] font-mono font-bold tracking-widest text-cyan-400/90 uppercase">
               Full Stack Developer
             </span>
           </div>
         </a>
 
         {/* Desktop Smooth Navigation Capsule */}
-        <div className="hidden lg:flex items-center gap-1 p-1 rounded-full bg-slate-950/90 backdrop-blur-2xl border border-white/10 relative">
+        <div className="hidden lg:flex items-center gap-1.5 p-1.5 rounded-full bg-slate-950/90 backdrop-blur-2xl border border-white/10 relative">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
@@ -103,13 +107,13 @@ const Navbar = () => {
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={(e) => handleSmoothScroll(e, item.id)}
-                className={`relative px-5 py-2 rounded-full text-[10px] font-bold uppercase tracking-[0.18em] transition-all duration-300 select-none cursor-pointer ${isActive ? 'text-cyan-300' : 'text-slate-400 hover:text-slate-100'
+                className={`relative px-5 xl:px-6 py-2 rounded-full text-[10px] xl:text-[11px] font-mono font-bold uppercase tracking-[0.18em] transition-all duration-300 select-none cursor-pointer ${isActive ? 'text-cyan-300' : 'text-slate-400 hover:text-slate-100'
                   }`}
               >
                 {isActive && (
                   <motion.div
                     layoutId="smoothActivePill"
-                    className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-purple-500/20 border border-cyan-400/60 rounded-full shadow-[0_0_15px_rgba(0,229,255,0.35)]"
+                    className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-purple-500/20 border border-cyan-400/60 rounded-full shadow-[0_0_20px_rgba(0,240,255,0.35)]"
                     transition={{ type: 'spring', stiffness: 350, damping: 30 }}
                   />
                 )}
@@ -120,14 +124,14 @@ const Navbar = () => {
         </div>
 
         {/* Action Buttons */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-3 xl:gap-4">
           <motion.a
             href={resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.18em] text-slate-200 border border-white/15 bg-white/5 hover:bg-white/10 hover:border-cyan-400/50 transition-all duration-300"
+            className="px-5 xl:px-6 py-2.5 rounded-full text-[10px] xl:text-[11px] font-mono font-bold uppercase tracking-[0.18em] text-slate-200 border border-white/15 bg-slate-900/80 hover:bg-white/10 hover:border-cyan-400/60 transition-all duration-300"
           >
             Resume
           </motion.a>
@@ -137,16 +141,17 @@ const Navbar = () => {
             onClick={(e) => handleSmoothScroll(e, 'contact')}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.18em] text-slate-950 bg-cyan-400 hover:bg-cyan-300 shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all duration-300 font-mono cursor-pointer"
+            className="px-6 xl:px-7 py-2.5 rounded-full text-[10px] xl:text-[11px] font-mono font-bold uppercase tracking-[0.18em] text-slate-950 bg-cyan-400 hover:bg-cyan-300 shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all duration-300 cursor-pointer"
           >
             Hire Me
           </motion.a>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Toggle Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="lg:hidden p-2 rounded-xl bg-white/5 border border-white/10 text-slate-200 hover:text-cyan-400 transition-colors"
+          className="lg:hidden p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-200 hover:text-cyan-400 transition-colors"
+          aria-label="Toggle Navigation"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {isMobileMenuOpen ? (
@@ -165,14 +170,14 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="lg:hidden mt-3 rounded-2xl bg-slate-950/95 backdrop-blur-2xl border border-cyan-500/20 p-5 flex flex-col gap-3 shadow-2xl"
+            className="lg:hidden mt-3 rounded-2xl bg-slate-950/95 backdrop-blur-2xl border border-cyan-500/30 p-5 flex flex-col gap-3 shadow-2xl"
           >
             {navItems.map((item) => (
               <a
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={(e) => handleSmoothScroll(e, item.id)}
-                className="text-xs font-bold uppercase tracking-widest text-slate-300 hover:text-cyan-400 py-2 border-b border-white/5 transition-colors"
+                className="text-xs font-mono font-bold uppercase tracking-widest text-slate-300 hover:text-cyan-400 py-2 border-b border-white/5 transition-colors"
               >
                 {item.label}
               </a>
@@ -182,14 +187,14 @@ const Navbar = () => {
                 href={resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 text-center py-2.5 text-xs font-bold uppercase tracking-widest border border-white/20 rounded-xl text-slate-200"
+                className="flex-1 text-center py-2.5 text-xs font-mono font-bold uppercase tracking-widest border border-white/20 rounded-xl text-slate-200"
               >
                 Resume
               </a>
               <a
                 href="#contact"
                 onClick={(e) => handleSmoothScroll(e, 'contact')}
-                className="flex-1 text-center py-2.5 text-xs font-bold uppercase tracking-widest bg-cyan-400 text-slate-950 rounded-xl font-mono shadow-[0_0_15px_rgba(0,229,255,0.4)]"
+                className="flex-1 text-center py-2.5 text-xs font-mono font-bold uppercase tracking-widest bg-cyan-400 text-slate-950 rounded-xl shadow-[0_0_15px_rgba(0,240,255,0.4)]"
               >
                 Hire Me
               </a>
