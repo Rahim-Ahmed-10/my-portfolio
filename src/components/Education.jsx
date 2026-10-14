@@ -25,13 +25,13 @@ const Education = () => {
       links: [
         {
           label: "View Certificate",
-          url: "https://drive.google.com/YOUR_CERTIFICATE_DRIVE_LINK_HERE",
+          url: "https://drive.google.com/file/d/1nzZmO61RczAdp33XpSPf_gBb8VymoZt0/view?usp=drive_link",
           icon: <FaExternalLinkAlt className="text-[10px]" />,
           color: "border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10"
         },
         {
           label: "Letter of Recommendation",
-          url: "https://drive.google.com/YOUR_RECOMMENDATION_DRIVE_LINK_HERE",
+          url: "https://drive.google.com/file/d/1laPy2BVqrcMw4-VYe6L9wF9YHk5gTE18/view?usp=drive_link",
           icon: <FaAward className="text-[11px] text-purple-400" />,
           color: "border-purple-500/40 text-purple-300 hover:bg-purple-500/10"
         }
