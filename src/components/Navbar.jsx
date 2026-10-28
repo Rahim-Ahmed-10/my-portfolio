@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { resumeUrl } from '../data/config';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('about');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -53,6 +56,11 @@ const Navbar = () => {
     setActiveSection(id);
     setIsMobileMenuOpen(false);
 
+    if (location.pathname !== '/') {
+      navigate(id === 'hero' ? '/' : `/#${id}`);
+      return;
+    }
+
     const targetElement = document.getElementById(id);
     if (targetElement) {
       const yOffset = -110; // Header height compensation to prevent overlapping
@@ -69,10 +77,11 @@ const Navbar = () => {
       className="fixed top-0 left-0 w-full z-[100] px-4 md:px-8 xl:px-12 py-3 transition-all duration-300 pointer-events-auto"
     >
       <div
-        className={`max-w-[1440px] mx-auto flex items-center justify-between px-6 py-3 rounded-full transition-all duration-500 border ${scrolled
+        className={`max-w-[1440px] mx-auto flex items-center justify-between px-6 py-3 rounded-full transition-all duration-500 border ${
+          scrolled
             ? 'bg-slate-950/90 backdrop-blur-2xl border-cyan-500/30 shadow-[0_10px_35px_rgba(0,0,0,0.9),0_0_20px_rgba(0,240,255,0.15)]'
             : 'bg-slate-900/50 backdrop-blur-md border-white/10 shadow-lg'
-          }`}
+        }`}
       >
         {/* Crystal Clear Brand Logo */}
         <a
@@ -107,8 +116,9 @@ const Navbar = () => {
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={(e) => handleSmoothScroll(e, item.id)}
-                className={`relative px-5 xl:px-6 py-2 rounded-full text-[10px] xl:text-[11px] font-mono font-bold uppercase tracking-[0.18em] transition-all duration-300 select-none cursor-pointer ${isActive ? 'text-cyan-300' : 'text-slate-400 hover:text-slate-100'
-                  }`}
+                className={`relative px-5 xl:px-6 py-2 rounded-full text-[10px] xl:text-[11px] font-mono font-bold uppercase tracking-[0.18em] transition-all duration-300 select-none cursor-pointer ${
+                  isActive ? 'text-cyan-300' : 'text-slate-400 hover:text-slate-100'
+                }`}
               >
                 {isActive && (
                   <motion.div
@@ -131,7 +141,7 @@ const Navbar = () => {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-5 xl:px-6 py-2.5 rounded-full text-[10px] xl:text-[11px] font-mono font-bold uppercase tracking-[0.18em] text-slate-200 border border-white/15 bg-slate-900/80 hover:bg-white/10 hover:border-cyan-400/60 transition-all duration-300"
+            className="px-5 py-2.5 rounded-full border border-white/20 hover:border-cyan-400/50 text-[11px] font-mono font-bold uppercase tracking-widest text-slate-200 hover:text-white bg-slate-900/40 hover:bg-slate-800/60 transition-all duration-300 shadow-sm"
           >
             Resume
           </motion.a>
@@ -139,11 +149,15 @@ const Navbar = () => {
           <motion.a
             href="#contact"
             onClick={(e) => handleSmoothScroll(e, 'contact')}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, boxShadow: '0 0 25px rgba(0, 240, 255, 0.6)' }}
             whileTap={{ scale: 0.95 }}
-            className="px-6 xl:px-7 py-2.5 rounded-full text-[10px] xl:text-[11px] font-mono font-bold uppercase tracking-[0.18em] text-slate-950 bg-cyan-400 hover:bg-cyan-300 shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all duration-300 cursor-pointer"
+            className="relative px-6 py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 text-[11px] font-mono font-black uppercase tracking-widest transition-all duration-300 shadow-[0_0_15px_rgba(0,240,255,0.4)] overflow-hidden group cursor-pointer"
           >
-            Hire Me
+            <span className="relative z-10 flex items-center gap-2">
+              <span>Hire Me</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-slate-950 animate-ping" />
+            </span>
+            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
           </motion.a>
         </div>
 

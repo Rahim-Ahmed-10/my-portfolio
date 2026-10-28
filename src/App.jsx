@@ -12,6 +12,7 @@ const About = lazy(() => import('./components/About'));
 const Skills = lazy(() => import('./components/Skills'));
 const Education = lazy(() => import('./components/Education'));
 const Projects = lazy(() => import('./components/Projects'));
+const AllProjectsView = lazy(() => import('./components/AllProjectsView'));
 const Contact = lazy(() => import('./components/Contact'));
 const Footer = lazy(() => import('./components/Footer'));
 const BackToTop = lazy(() => import('./components/BackToTop'));
@@ -82,9 +83,12 @@ function App() {
       <Navbar />
       
       <main className="relative z-10 pt-32 pb-20">
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center font-mono text-cyan-400 text-sm">INITIALIZING SYSTEM...</div>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<AllProjectsView />} />
+          </Routes>
+        </Suspense>
       </main>
 
       <Suspense fallback={null}>
@@ -96,4 +100,3 @@ function App() {
 }
 
 export default App;
-
