@@ -39,8 +39,46 @@ export const projectsData = [
     tags: ['Healthcare', 'Booking System', 'Full Stack']
   },
   {
-    id: 'suncart',
+    id: 'drivevue-ai',
     module: 'Module_03',
+    title: 'DriveVue AI',
+    category: 'Full-Stack',
+    featured: true,
+    description: 'An AI-powered automotive and smart driving platform designed to provide intelligent vehicle insights, driver assistance, and seamless user management.',
+    fullDescription: 'DriveVue AI is a modern full-stack web application that integrates artificial intelligence to enhance vehicle discovery and driving analytics. Built with a responsive interface and scalable backend architecture, it offers real-time data processing, smart recommendations, and secure user authentication.',
+    livelink: "https://drivevue-ai-client.vercel.app",
+    githubClient: "https://github.com/Rahim-Ahmed-10/drivevue-ai-client",
+    githubServer: "https://github.com/Rahim-Ahmed-10/drivevue-ai-server",
+    image: 'https://i.ibb.co.com/0RHW9rJb/Drive-Vue-AI-Luxury-Cars-Made-Simple-1.png',
+    color: 'cyber-blue',
+    reverse: false,
+    techStack: ['React', 'Next.js', 'Tailwind CSS', 'Node.js', 'MongoDB', 'AI Integration'],
+    challenges: "Integrating AI responses smoothly into the UI while maintaining fast load times and handling asynchronous API states without lag.",
+    improvements: "Adding voice-command features, real-time vehicle telemetry tracking, and a personalized AI maintenance scheduler.",
+    tags: ['AI Platform', 'Full-Stack', 'Next.js']
+  },
+  {
+    id: 'squadraft',
+    module: 'Module_04',
+    title: 'Squadraft',
+    category: 'Full-Stack',
+    featured: true,
+    description: 'A collaborative team and project management platform built to streamline squad workflows, task tracking, and real-time team coordination.',
+    fullDescription: 'Squadraft is a full-stack team collaboration and workflow management web application designed for modern squads and organizations. It enables teams to organize projects, assign tasks, track progress, and collaborate efficiently through a clean, intuitive, and responsive interface.',
+    livelink: "https://squadraft-client.vercel.app/",
+    githubClient: "https://github.com/Rahim-Ahmed-10/squadraft-client",
+    githubServer: "https://github.com/Rahim-Ahmed-10/Squadcraft-server",
+    image: 'https://i.ibb.co.com/35MQ7VQJ/Squad-Craft-Tactical-Pitch-Hero.png',
+    color: 'cyber-purple',
+    reverse: true,
+    techStack: ['React', 'Next.js', 'Tailwind CSS', 'Node.js', 'Express.js', 'MongoDB'],
+    challenges: "Designing a responsive team workspace that keeps task states synchronized across multiple users while maintaining smooth UI transitions.",
+    improvements: "Adding real-time WebSocket notifications, role-based workspace permissions, and integrated team chat.",
+    tags: ['Team Collaboration', 'Full-Stack', 'SaaS']
+  },
+  {
+    id: 'suncart',
+    module: 'Module_05',
     title: 'SunCart',
     category: 'Frontend',
     featured: true,
@@ -58,7 +96,7 @@ export const projectsData = [
   },
   {
     id: 'payoo',
-    module: 'Module_04',
+    module: 'Module_06',
     title: 'Payoo',
     category: 'Frontend',
     featured: true,
@@ -74,4 +112,5 @@ export const projectsData = [
     improvements: "Upgrade the prototype to a full React/Next.js stack, add backend integration for real transaction processing, and implement strict JWT-based authentication.",
     tags: ['MFS Prototype', 'Financial UI', 'Vanilla JS']
   },
+
 ];
